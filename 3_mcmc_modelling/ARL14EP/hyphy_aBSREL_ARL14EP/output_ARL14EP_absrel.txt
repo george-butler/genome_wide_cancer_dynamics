@@ -1,0 +1,988 @@
+
+Analysis Description
+--------------------
+aBSREL (Adaptive branch-site random effects likelihood) uses an adaptive
+random effects branch-site model framework to test whether each branch
+has evolved under positive selection, using a procedure which infers an
+optimal number of rate categories per branch. v2.2 adds support for
+multiple-hit models. v2.3 adds support for SRV. v2.5 adds support for
+ancestral state reconstruction, identification of sites contributing to
+selection signal, and some diagnostics. 
+
+- __Requirements__: in-frame codon alignment and a phylogenetic tree
+
+- __Citation__:  Less Is More: An Adaptive Branch-Site Random Effects Model for
+Efficient Detection of Episodic Diversifying Selection (2015). Mol Biol
+Evol 32 (5): 1342-1353. 
+
+- __Written by__: Sergei L Kosakovsky Pond, Ben Murrell, Steven Weaver and Temple iGEM /
+UCSD viral evolution group
+
+- __Contact Information__: spond@temple.edu
+
+- __Analysis Version__: 2.5
+
+[Advanced option] Bag of little bootstrap alignment resampling rate (permissible range = [0.01,1], default value = 1): blb: 1
+
+>code => Universal
+
+-------
+>[WARNING]
+'/data/mschatz1/gbutle16/./BATCH2_1_7_2026/ARL14EP/hyphy_aBSREL_ARL14EP/combined.data'
+contains 20 duplicate sequences. Identical sequences do not contribute
+any information to the analysis and only slow down computation. Please
+consider removing duplicate or 'nearly' duplicate sequences, e.g. using
+https://github.com/veg/hyphy-analyses/tree/master/remove-duplicates
+prior to running selection analyses
+-------
+>Loaded a multiple sequence alignment with **257** sequences, **265** codons, and **1** partitions from `/data/mschatz1/gbutle16/./BATCH2_1_7_2026/ARL14EP/hyphy_aBSREL_ARL14EP/combined.data`
+
+>branches => All
+
+>multiple-hits => Double+Triple
+
+>srv => No
+
+
+### * Selected 511 branches for testing: `Trichosurus_vulpecula, Petaurus_breviceps, Acrobates_pygmaeus, Node10, Node8, Phascolarctos_cinereus, Node7, Dromiciops_gliroides, Node6, Monodelphis_domestica, Node5, Suncus_etruscus, Talpa_europaea, Node19, Manis_pentadactyla, Suricata_suricatta, Acinonyx_jubatus, Puma_concolor, Node32, Lynx_canadensis, Node31, Neofelis_nebulosa, Panthera_tigris, Panthera_leo, Panthera_pardus, Node42, Panthera_onca, Node41, Panthera_uncia, Node40, Node38, Node36, Node30, Node28, Vulpes_vulpes, Canis_lupus, Lycaon_pictus, Node50, Node48, Martes_martes, Lutra_lutra, Lontra_canadensis, Node59, Mustela_putorius, Mustela_lutreola, Node64, Mustela_nigripes, Node63, Mustela_erminea, Node62, Node58, Node56, Procyon_lotor, Node55, Zalophus_californianus, Phoca_vitulina, Node70, Node54, Ursus_maritimus, Node53, Node47, Node27, Node25, Equus_caballus, Node24, Camelus_dromedarius, Kogia_breviceps, Inia_geoffrensis, Phocoena_sinus, Phocoena_phocoena, Node87, Orcinus_orca, Lagenorhynchus_albirostris, Lagenorhynchus_acutus, Node93, Globicephala_melas, Delphinus_delphis, Stenella_coeruleoalba, Node98, Node96, Node92, Node90, Node86, Node84, Mesoplodon_densirostris, Node83, Node81, Eubalaena_glacialis, Balaenoptera_musculus, Balaenoptera_acutorostrata, Node104, Node102, Node80, Hippopotamus_amphibius, Node79, Antilocapra_americana, Tragelaphus_strepsiceros, Litocranius_walleri, Nanger_dama, Eudorcas_thomsonii, Node117, Node115, Addax_nasomaculatus, Ovis_canadensis, Node120, Node114, Aepyceros_melampus, Node113, Node111, Muntiacus_reevesi, Rangifer_tarandus, Node124, Node110, Node108, Node78, Phacochoerus_africanus, Sus_scrofa, Node127, Node77, Node75, Node23, Hipposideros_larvatus, Rhinolophus_ferrumequinum, Rhinolophus_hipposideros, Node134, Node132, Rousettus_aegyptiacus, Eidolon_helvum, Node137, Node131, Rhynchonycteris_naso, Carollia_perspicillata, Artibeus_lituratus, Artibeus_jamaicensis, Node147, Node145, Phyllostomus_discolor, Node144, Macrotus_californicus, Node143, Myotis_daubentonii, Myotis_nattereri, Node154, Myotis_mystacinus, Node153, Plecotus_auritus, Vespertilio_murinus, Nyctalus_leisleri, Pipistrellus_pygmaeus, Pipistrellus_pipistrellus, Node165, Node163, Node161, Eptesicus_nilssonii, Node160, Node158, Node152, Node142, Node140, Node130, Node22, Node18, Oryctolagus_cuniculus, Ochotona_princeps, Node171, Muscardinus_avellanarius, Urocitellus_parryii, Sciurus_carolinensis, Sciurus_vulgaris, Node179, Node177, Node175, Microtus_agrestis, Chionomys_nivalis, Node186, Arvicola_amphibius, Node185, Rattus_norvegicus, Mus_musculus, Apodemus_sylvaticus, Node193, Node191, Micromys_minutus, Node190, Node184, Thomomys_bottae, Node183, Heterocephalus_glaber, Octodon_degus, Chinchilla_lanigera, Node201, Dasyprocta_punctata, Hydrochoerus_hydrochaeris, Node204, Node200, Node198, Node182, Node174, Node170, Cynocephalus_volans, Nycticebus_coucang, Varecia_variegata, Lemur_catta, Node212, Node210, Pithecia_pithecia, Cebuella_pygmaea, Callithrix_jacchus, Node221, Leontopithecus_chrysomelas, Node220, Saguinus_imperator, Saguinus_oedipus, Node225, Node219, Saimiri_boliviensis, Node218, Node216, Symphalangus_syndactylus, Gorilla_gorilla, Pan_paniscus, Pan_troglodytes, Node235, Node233, Pongo_pygmaeus, Pongo_abelii, Node238, Node232, Node230, Papio_hamadryas, Mandrillus_sphinx, Node243, Macaca_nemestrina, Macaca_nigra, Node246, Node242, Colobus_guereza, Node241, Node229, Node215, Node209, Node207, Node169, Node17, Heterohyrax_brucei, Procavia_capensis, Node254, Dugong_dugon, Node253, Loxodonta_africana, Elephas_maximus, Node258, Node252, Rhynchocyon_petersi, Node251, Dasypus_novemcinctus, Tamandua_tetradactyla, Choloepus_didactylus, Node264, Node262, Node250, Node16, Node4, Tachyglossus_aculeatus, Ornithorhynchus_anatinus, Node267, Node3, Eudromia_elegans, Apteryx_mantelli, Dromaius_novaehollandiae, Node274, Node272, Rhea_pennata, Rhea_americana, Node277, Node271, Tauraco_erythrolophus, Apus_apus, Phaethornis_superciliosus, Calypte_anna, Heliangelus_exortis, Node292, Node290, Node288, Podargus_strigoides, Node287, Nyctibius_grandis, Node286, Caprimulgus_europaeus, Node285, Node283, Theristicus_caerulescens, Eudocimus_ruber, Node309, Scopus_umbretta, Node308, Ciconia_ciconia, Node307, Morus_bassanus, Node306, Spheniscus_demersus, Spheniscus_humboldti, Node315, Node305, Gavia_stellata, Node304, Eurypyga_helias, Rhynochetos_jubatus, Node319, Node303, Gallinula_chloropus, Balearica_regulorum, Grus_grus, Node324, Node322, Node302, Alca_torda, Sterna_hirundo, Larus_michahellis, Chroicocephalus_ridibundus, Node333, Node331, Node329, Numenius_arquata, Node328, Pluvialis_apricaria, Node327, Node301, Pterocles_gutturalis, Caloenas_nicobarica, Streptopelia_decaocto, Streptopelia_turtur, Node345, Nesoenas_mayeri, Node344, Columba_livia, Node343, Patagioenas_fasciata, Node342, Node340, Node338, Node300, Opisthocomus_hoazin, Node299, Momotus_momota, Dryobates_pubescens, Ramphastos_swainsonii, Node360, Node358, Bucorvus_abyssinicus, Node357, Trogon_surrucura, Node356, Leptosomus_discolor, Node355, Megascops_asio, Strix_aluco, Node366, Node354, Gypaetus_barbatus, Buteo_buteo, Haliaeetus_albicilla, Haliaeetus_leucocephalus, Node377, Milvus_milvus, Node376, Node374, Accipiter_gentilis, Node373, Aquila_chrysaetos, Node372, Node370, Sarcoramphus_papa, Node369, Node353, Melopsittacus_undulatus, Lathamus_discolor, Trichoglossus_haematodus, Lorius_garrulus, Lorius_lory, Node396, Node394, Node392, Node390, Agapornis_nigrigenis, Agapornis_fischeri, Node399, Node389, Ara_ararauna, Node388, Cacatua_moluccensis, Nymphicus_hollandicus, Node403, Node387, Leiothrix_lutea, Sylvia_borin, Sylvia_atricapilla, Node414, Node412, Hirundo_rustica, Node411, Poecile_atricapillus, Node410, Acridotheres_tristis, Leucopsar_rothschildi, Node421, Catharus_ustulatus, Cossypha_polioptera, Erithacus_rubecula, Node427, Node425, Cinclus_cinclus, Node424, Node420, Corvus_moneduloides, Taeniopygia_guttata, Vidua_chalybeata, Node435, Corvus_hawaiiensis, Node434, Node432, Passerculus_sandwichensis, Melospiza_melodia, Melospiza_georgiana, Node444, Node442, Geothlypis_trichas, Node441, Haemorhous_mexicanus, Fringilla_coelebs, Node448, Node440, Passer_domesticus, Node439, Node431, Node419, Node409, Pitta_sordida, Node408, Acanthisitta_chloris, Node407, Chiroxiphia_lanceolata, Node406, Node386, Falco_peregrinus, Falco_cherrug, Falco_rusticolus, Node460, Falco_biarmicus, Node459, Node457, Falco_punctatus, Falco_naumanni, Node464, Node456, Polihierax_semitorquatus, Node455, Node385, Cariama_cristata, Node384, Node352, Node298, Node282, Cuculus_canorus, Node281, Anas_platyrhynchos, Anas_acuta, Node476, Aythya_ferina, Aythya_fuligula, Node480, Netta_rufina, Node479, Node475, Clangula_hyemalis, Node474, Bucephala_clangula, Node473, Anser_anser, Anser_brachyrhynchus, Node488, Cygnus_olor, Cygnus_cygnus, Node491, Node487, Oxyura_jamaicensis, Node486, Node472, Aix_galericulata, Aix_sponsa, Node495, Node471, Tetrao_urogallus, Lagopus_muta, Node503, Tympanuchus_cupido, Node502, Meleagris_gallopavo, Node501, Pavo_cristatus, Gallus_gallus, Node508, Node500, Colinus_virginianus, Node499, Numida_meleagris, Node498, Node470, Node280, Node270, Ascaphus_truei`
+
+
+### Obtaining branch lengths and nucleotide substitution biases under the nucleotide GTR model
+[**WARNING**] Incorrect type for the initial values object for partition 0. 0
+
+>kill-zero-lengths => Yes
+
+### Deleted 64 zero-length internal branches: `Node113, Node114, Node117, Node120, Node145, Node165, Node22, Node220, Node221, Node225, Node232, Node243, Node246, Node250, Node253, Node272, Node283, Node286, Node298, Node299, Node300, Node301, Node302, Node304, Node305, Node308, Node31, Node32, Node331, Node344, Node355, Node356, Node357, Node36, Node373, Node374, Node377, Node390, Node392, Node40, Node41, Node410, Node419, Node42, Node424, Node431, Node434, Node444, Node460, Node472, Node479, Node488, Node503, Node508, Node53, Node59, Node63, Node64, Node81, Node86, Node92, Node93, Node96, Node98`
+* Log(L) = -24968.08, AIC-c = 50976.81 (519 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  6.070
+
+### Fitting the baseline model with a single dN/dS class per branch, and no site-to-site variation. 
+* Log(L) = -21578.88, AIC-c = 46859.76 (1802 estimated parameters)
+* Branch-level non-synonymous/synonymous rate ratio distribution has median  0.09, and 95% of the weight in  0.01 -  0.96
+* Branch-level rate at which 2 nucleotides are changed instantly within a single codon distribution has median  0.00, and 95% of the weight in  0.00 -  8.70
+* Branch-level rate at which 3 nucleotides are changed instantly within a single codon distribution has median  0.00, and 95% of the weight in  0.00 -  0.00
+
+### Determining the optimal number of rate classes per branch using a step up procedure
+
+|              Branch               |  Length  |  Rates   |     Max. dN/dS     |  2x rate   |  3x rate   |    Log(L)     |     AIC-c     |Best AIC-c so far|
+|-----------------------------------|----------|----------|--------------------|------------|------------|---------------|---------------|-----------------|
+|          Ascaphus_truei           |   0.36   |    2     |    1.83 (31.65%)   |    0.27    |    0.00    |   -21573.74   |   46853.72    |    46853.72     |
+|          Ascaphus_truei           |   0.36   |    3     |   10.73 ( 9.11%)   |    0.00    |    0.00    |   -21570.98   |   46852.41    |    46852.41     |
+|          Ascaphus_truei           |   0.36   |    4     |   11.76 ( 8.45%)   |    0.00    |    0.00    |   -21570.99   |   46856.66    |    46852.41     |
+|     Trichoglossus_haematodus      |   0.23   |    2     |    0.09 (50.32%)   |    0.00    |    0.00    |   -21570.98   |   46856.63    |    46852.41     |
+|          Equus_caballus           |   0.16   |    2     |    0.15 ( 0.00%)   |    0.00    |    0.00    |   -21570.98   |   46856.63    |    46852.41     |
+|              Node198              |   0.15   |    2     |    1.24 ( 0.00%)   |    0.00    |    0.00    |   -21570.98   |   46856.63    |    46852.41     |
+|       Agapornis_nigrigenis        |   0.15   |    2     |    0.07 (54.38%)   |    0.00    |    0.00    |   -21570.98   |   46856.63    |    46852.41     |
+|          Suncus_etruscus          |   0.11   |    2     |    0.31 ( 8.75%)   |    0.70    |    1.89    |   -21570.95   |   46856.56    |    46852.41     |
+|              Node270              |   0.11   |    2     |    4.63 ( 4.00%)   |    0.00    |    0.00    |   -21567.05   |   46848.78    |    46848.78     |
+|              Node270              |   0.11   |    3     |    8.30 ( 2.37%)   |    0.00    |    0.00    |   -21566.74   |   46852.37    |    46848.78     |
+|              Node16               |   0.10   |    2     |    1.13 ( 5.39%)   |    0.00    |    0.01    |   -21566.83   |   46852.55    |    46848.78     |
+|              Node184              |   0.10   |    2     |    0.52 (10.66%)   |    0.00    |    0.00    |   -21566.92   |   46852.73    |    46848.78     |
+|              Node267              |   0.08   |    2     |    0.05 (15.71%)   |    0.00    |    0.00    |   -21567.05   |   46852.99    |    46848.78     |
+|           Octodon_degus           |   0.08   |    2     |    0.01 (59.52%)   |    0.37    |    0.11    |   -21567.06   |   46853.01    |    46848.78     |
+|              Node435              |   0.08   |    2     |    0.16 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|       Acanthisitta_chloris        |   0.07   |    2     |    7.99 ( 1.83%)   |    0.05    |    0.00    |   -21565.55   |   46849.98    |    46848.78     |
+|        Gallinula_chloropus        |   0.07   |    2     |    0.14 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|          Cuculus_canorus          |   0.06   |    2     |    0.09 (41.90%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node409              |   0.06   |    2     |    0.05 (28.75%)   |    0.00    |    0.01    |   -21567.08   |   46853.05    |    46848.78     |
+|      Chiroxiphia_lanceolata       |   0.06   |    2     |   0.02 (100.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|       Rhynchonycteris_naso        |   0.06   |    2     |    1.09 ( 0.00%)   |    0.00    |    0.01    |   -21567.06   |   46853.00    |    46848.78     |
+|         Ochotona_princeps         |   0.06   |    2     |    0.38 ( 0.00%)   |    0.93    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|        Vespertilio_murinus        |   0.06   |    2     |    0.00 (30.67%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|        Rhynchocyon_petersi        |   0.05   |    2     |    0.00 (93.92%)   |    0.45    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|           Pitta_sordida           |   0.05   |    2     |   0.03 (100.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|          Thomomys_bottae          |   0.05   |    2     |    0.02 (15.34%)   |    0.40    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|         Trogon_surrucura          |   0.05   |    2     |    0.02 (82.45%)   |    0.44    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|     Muscardinus_avellanarius      |   0.05   |    2     |    0.24 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|       Heterocephalus_glaber       |   0.05   |    2     |    0.04 (40.19%)   |    0.00    |    0.00    |   -21567.07   |   46853.03    |    46848.78     |
+|              Node185              |   0.05   |    2     |    1.80 ( 0.76%)   |    2.79    |    0.00    |   -21566.82   |   46852.53    |    46848.78     |
+|         Micromys_minutus          |   0.05   |    2     |    0.08 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|        Manis_pentadactyla         |   0.05   |    2     |    0.30 ( 0.00%)   |    0.00    |    0.12    |   -21567.06   |   46853.02    |    46848.78     |
+|        Dasyprocta_punctata        |   0.05   |    2     |    0.00 (45.75%)   |    0.00    |    0.12    |   -21567.05   |   46853.00    |    46848.78     |
+|               Node5               |   0.05   |    2     |    0.04 (64.76%)   |    0.86    |    0.00    |   -21567.06   |   46853.00    |    46848.78     |
+|              Node439              |   0.05   |    2     |    0.00 (93.16%)   |    0.42    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node319              |   0.04   |    2     |    0.04 (84.17%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|         Eudromia_elegans          |   0.04   |    2     |    7.31 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|       Caprimulgus_europaeus       |   0.04   |    2     |    0.27 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|          Momotus_momota           |   0.04   |    2     |    0.13 (12.58%)   |    0.03    |    0.02    |   -21567.09   |   46853.08    |    46848.78     |
+|              Node432              |   0.04   |    2     |    0.47 ( 9.04%)   |    0.00    |    0.00    |   -21566.77   |   46852.43    |    46848.78     |
+|        Opisthocomus_hoazin        |   0.04   |    2     |    0.14 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node471              |   0.04   |    2     |    0.09 ( 8.98%)   |    0.00    |    0.00    |   -21567.06   |   46853.00    |    46848.78     |
+|       Bucorvus_abyssinicus        |   0.04   |    2     |    0.03 (99.74%)   |    0.04    |    0.00    |   -21567.06   |   46853.00    |    46848.78     |
+|              Node204              |   0.04   |    2     |    0.81 ( 0.00%)   |    0.24    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|        Podargus_strigoides        |   0.04   |    2     |    0.30 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|        Chinchilla_lanigera        |   0.04   |    2     |    0.57 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|        Nycticebus_coucang         |   0.04   |    2     |   0.02 (100.00%)   |    0.57    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node406              |   0.04   |    2     |    0.08 ( 0.62%)   |    0.00    |    0.00    |   -21567.06   |   46853.00    |    46848.78     |
+|          Morus_bassanus           |   0.03   |    2     |   12.11 ( 0.57%)   |    0.00    |    0.00    |   -21565.10   |   46849.08    |    46848.78     |
+|              Node290              |   0.03   |    2     |    0.41 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|        Erithacus_rubecula         |   0.03   |    2     |  621.63 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node340              |   0.03   |    2     |    0.03 (87.35%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|               Node4               |   0.03   |    2     |    0.02 (76.53%)   |    0.70    |    1.40    |   -21567.05   |   46853.00    |    46848.78     |
+|          Talpa_europaea           |   0.03   |    2     |   19.56 ( 0.39%)   |    0.73    |    0.15    |   -21565.97   |   46850.83    |    46848.78     |
+|     Hydrochoerus_hydrochaeris     |   0.03   |    2     |    0.00 ( 0.00%)   |    1.52    |    0.10    |   -21567.05   |   46853.00    |    46848.78     |
+|           Mus_musculus            |   0.03   |    2     |    0.02 (55.17%)   |    0.19    |    3.40    |   -21567.05   |   46853.00    |    46848.78     |
+|       Dasypus_novemcinctus        |   0.03   |    2     |    6.83 ( 0.26%)   |    0.34    |    0.02    |   -21566.95   |   46852.79    |    46848.78     |
+|       Pterocles_gutturalis        |   0.03   |    2     |    0.72 ( 6.60%)   |    0.00    |    0.00    |   -21566.07   |   46851.03    |    46848.78     |
+|        Cynocephalus_volans        |   0.03   |    2     |   0.02 (100.00%)   |    0.22    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node427              |   0.03   |    2     |    1.81 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|         Cebuella_pygmaea          |   0.03   |    2     |    0.10 ( 1.40%)   |    0.41    |    0.02    |   -21567.07   |   46853.03    |    46848.78     |
+|        Suricata_suricatta         |   0.03   |    2     |    0.00 (47.02%)   |    0.00    |    0.08    |   -21567.05   |   46853.00    |    46848.78     |
+|          Eurypyga_helias          |   0.03   |    2     |    1.44 ( 1.90%)   |    0.00    |    0.01    |   -21566.68   |   46852.25    |    46848.78     |
+|              Node498              |   0.03   |    2     |    0.04 ( 5.49%)   |    0.46    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|             Apus_apus             |   0.03   |    2     |    1.62 ( 0.00%)   |    0.44    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node258              |   0.03   |    2     |    0.03 (12.42%)   |    0.15    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|        Leptosomus_discolor        |   0.03   |    2     |   59.15 ( 0.45%)   |    0.01    |    0.27    |   -21565.90   |   46850.69    |    46848.78     |
+|         Numida_meleagris          |   0.03   |    2     |    0.52 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node152              |   0.03   |    2     |    0.02 (16.49%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|       Tauraco_erythrolophus       |   0.03   |    2     |    6.75 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|        Rhynochetos_jubatus        |   0.03   |    2     |    7.78 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|        Colinus_virginianus        |   0.03   |    2     |    0.02 (67.04%)   |    0.00    |    0.00    |   -21567.06   |   46853.01    |    46848.78     |
+|              Node387              |   0.03   |    2     |   0.01 (100.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node254              |   0.03   |    2     |    1.68 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|       Monodelphis_domestica       |   0.03   |    2     |    0.00 (43.69%)   |    0.00    |    0.11    |   -21567.05   |   46853.00    |    46848.78     |
+|          Hirundo_rustica          |   0.03   |    2     |    0.04 (36.93%)   |    0.00    |    0.00    |   -21567.07   |   46853.03    |    46848.78     |
+|       Dromiciops_gliroides        |   0.02   |    2     |    0.00 (47.33%)   |    0.00    |    0.09    |   -21567.05   |   46853.00    |    46848.78     |
+|        Catharus_ustulatus         |   0.02   |    2     |    2.34 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|         Rattus_norvegicus         |   0.02   |    2     |    1.12 ( 0.00%)   |    1.36    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node179              |   0.02   |    2     |    1.29 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|      Carollia_perspicillata       |   0.02   |    2     |    3.38 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|           Dugong_dugon            |   0.02   |    2     |    0.94 ( 0.78%)   |    0.00    |    0.00    |   -21567.02   |   46852.94    |    46848.78     |
+|              Node360              |   0.02   |    2     |    0.51 ( 9.41%)   |    0.00    |    0.00    |   -21566.86   |   46852.60    |    46848.78     |
+|       Oryctolagus_cuniculus       |   0.02   |    2     |    0.00 (46.15%)   |    0.00    |    0.09    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node171              |   0.02   |    2     |    0.00 (46.15%)   |    0.00    |    0.09    |   -21567.05   |   46853.00    |    46848.78     |
+|          Leiothrix_lutea          |   0.02   |    2     |    6.03 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|       Tamandua_tetradactyla       |   0.02   |    2     |    0.00 (46.98%)   |    0.00    |    0.12    |   -21567.05   |   46853.00    |    46848.78     |
+|          Pavo_cristatus           |   0.02   |    2     |    0.01 (99.74%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node132              |   0.02   |    2     |    0.00 (46.61%)   |    0.00    |    0.09    |   -21567.05   |   46853.00    |    46848.78     |
+|       Macrotus_californicus       |   0.02   |    2     |    0.00 (47.75%)   |    0.00    |    0.13    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node288              |   0.02   |    2     |    1.45 ( 0.00%)   |    0.39    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|        Pluvialis_apricaria        |   0.02   |    2     |    2.13 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node127              |   0.02   |    2     |    0.00 (46.88%)   |    0.00    |    0.13    |   -21567.05   |   46853.00    |    46848.78     |
+|         Vidua_chalybeata          |   0.02   |    2     |    0.01 (99.50%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|          Scopus_umbretta          |   0.02   |    2     |  151.04 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|        Saguinus_imperator         |   0.02   |    2     |    0.22 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node147              |   0.02   |    2     |    0.00 ( 0.00%)   |    2.83    |    0.05    |   -21567.05   |   46853.00    |    46848.78     |
+|         Passer_domesticus         |   0.02   |    2     |    0.03 (13.76%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node366              |   0.02   |    2     |    0.04 (43.40%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node455              |   0.02   |    2     |    0.48 ( 0.00%)   |    1.06    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|    Leontopithecus_chrysomelas     |   0.02   |    2     |    0.20 (15.38%)   |    0.29    |    0.00    |   -21567.04   |   46852.96    |    46848.78     |
+|       Antilocapra_americana       |   0.02   |    2     |    0.59 ( 0.00%)   |    0.53    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|        Agapornis_fischeri         |   0.02   |    2     |    0.03 (10.33%)   |    0.40    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node134              |   0.02   |    2     |    2.22 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|       Ramphastos_swainsonii       |   0.02   |    2     |    0.00 (43.63%)   |    0.00    |    0.12    |   -21567.05   |   46853.00    |    46848.78     |
+|          Cinclus_cinclus          |   0.02   |    2     |   0.02 (100.00%)   |    0.25    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node470              |   0.02   |    2     |    0.01 (99.97%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|         Numenius_arquata          |   0.02   |    2     |    0.03 (44.13%)   |    0.00    |    0.00    |   -21567.07   |   46853.02    |    46848.78     |
+|      Hippopotamus_amphibius       |   0.02   |    2     |    0.01 (47.73%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|        Camelus_dromedarius        |   0.02   |    2     |    1.32 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|        Taeniopygia_guttata        |   0.02   |    2     |    2.50 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|        Oxyura_jamaicensis         |   0.02   |    2     |   71.52 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|         Nyctibius_grandis         |   0.02   |    2     |    4.61 ( 0.75%)   |    0.00    |    0.00    |   -21565.74   |   46850.37    |    46848.78     |
+|              Node143              |   0.02   |    2     |    1.04 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|         Chionomys_nivalis         |   0.02   |    2     |    0.00 (47.08%)   |    0.00    |    0.12    |   -21567.05   |   46853.00    |    46848.78     |
+|        Apodemus_sylvaticus        |   0.02   |    2     |   12.65 ( 0.41%)   |    0.28    |    0.00    |   -21566.26   |   46851.42    |    46848.78     |
+|       Phyllostomus_discolor       |   0.02   |    2     |    1.07 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node108              |   0.02   |    2     |    0.00 (43.29%)   |    0.00    |    0.11    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node177              |   0.02   |    2     |    0.00 ( 0.00%)   |    3.42    |    0.03    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node315              |   0.02   |    2     |    0.05 (30.43%)   |    0.00    |    0.01    |   -21567.07   |   46853.04    |    46848.78     |
+|              Node370              |   0.02   |    2     |    0.00 (47.25%)   |    0.00    |    0.12    |   -21567.05   |   46853.00    |    46848.78     |
+|        Dryobates_pubescens        |   0.02   |    2     |    0.00 (46.48%)   |    0.00    |    0.11    |   -21567.05   |   46853.00    |    46848.78     |
+|          Ciconia_ciconia          |   0.02   |    2     |    0.02 (46.74%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node215              |   0.02   |    2     |    1.58 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|               Node6               |   0.02   |    2     |    0.60 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node137              |   0.02   |    2     |    0.31 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|        Addax_nasomaculatus        |   0.01   |    2     |    0.84 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node124              |   0.01   |    2     |    0.99 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node277              |   0.01   |    2     |    0.00 ( 0.00%)   |    4.10    |    0.09    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node48               |   0.01   |    2     |    0.00 (45.76%)   |    0.00    |    0.11    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node486              |   0.01   |    2     |    0.01 (99.21%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|      Phascolarctos_cinereus       |   0.01   |    2     |    0.29 ( 0.00%)   |    2.13    |    0.06    |   -21567.06   |   46853.00    |    46848.78     |
+|              Node190              |   0.01   |    2     |    0.02 (56.84%)   |    0.02    |    0.02    |   -21567.07   |   46853.03    |    46848.78     |
+|              Node271              |   0.01   |    2     |  228.68 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|       Poecile_atricapillus        |   0.01   |    2     |    0.06 (25.61%)   |    0.00    |    0.01    |   -21567.07   |   46853.04    |    46848.78     |
+|     Tragelaphus_strepsiceros      |   0.01   |    2     |    0.00 (45.87%)   |    0.00    |    0.13    |   -21567.05   |   46853.00    |    46848.78     |
+|      Melopsittacus_undulatus      |   0.01   |    2     |    0.37 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node262              |   0.01   |    2     |    3.90 ( 0.00%)   |    0.00    |    0.01    |   -21567.06   |   46853.00    |    46848.78     |
+|              Node386              |   0.01   |    2     |    0.17 ( 3.06%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|           Procyon_lotor           |   0.01   |    2     |    1.08 ( 3.68%)   |    0.00    |    4.52    |   -21566.43   |   46851.75    |    46848.78     |
+|           Gallus_gallus           |   0.01   |    2     |    0.81 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|           Columba_livia           |   0.01   |    2     |    3.74 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node414              |   0.01   |    2     |    2.80 ( 0.98%)   |    0.00    |    0.02    |   -21566.79   |   46852.48    |    46848.78     |
+|              Node153              |   0.01   |    2     |    3.18 ( 0.48%)   |    0.00    |    0.05    |   -21566.86   |   46852.61    |    46848.78     |
+|              Node28               |   0.01   |    2     |    0.00 (46.68%)   |    0.00    |    0.11    |   -21567.05   |   46853.00    |    46848.78     |
+|        Balearica_regulorum        |   0.01   |    2     |    0.00 (44.99%)   |    0.00    |    0.11    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node500              |   0.01   |    2     |    2.96 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node182              |   0.01   |    2     |    0.00 (46.15%)   |    0.00    |    0.10    |   -21567.05   |   46853.00    |    46848.78     |
+|         Cariama_cristata          |   0.01   |    2     |    0.00 (46.97%)   |    0.00    |    0.12    |   -21567.05   |   46853.00    |    46848.78     |
+|       Haemorhous_mexicanus        |   0.01   |    2     |    0.76 ( 0.00%)   |    3.01    |    0.03    |   -21567.06   |   46853.00    |    46848.78     |
+|              Node342              |   0.01   |    2     |    0.00 (45.62%)   |    0.00    |    0.12    |   -21567.05   |   46853.00    |    46848.78     |
+|          Eidolon_helvum           |   0.01   |    2     |    0.00 (45.24%)   |    0.00    |    0.11    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node252              |   0.01   |    2     |    0.02 (59.28%)   |    0.00    |    0.00    |   -21567.07   |   46853.02    |    46848.78     |
+|       Nymphicus_hollandicus       |   0.01   |    2     |    0.02 (66.86%)   |    0.00    |    0.00    |   -21567.06   |   46853.00    |    46848.78     |
+|              Node251              |   0.01   |    2     |    0.00 (49.13%)   |    0.00    |    0.13    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node421              |   0.01   |    2     |    1.39 ( 1.39%)   |    0.00    |   19.52    |   -21565.98   |   46850.86    |    46848.78     |
+|              Node27               |   0.01   |    2     |    0.53 ( 0.00%)   |    0.00    |    0.09    |   -21567.06   |   46853.01    |    46848.78     |
+|              Node216              |   0.01   |    2     |    0.00 (45.24%)   |    0.00    |    0.11    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node328              |   0.01   |    2     |    0.57 ( 2.88%)   |    0.39    |    0.07    |   -21567.03   |   46852.94    |    46848.78     |
+|        Saimiri_boliviensis        |   0.01   |    2     |    0.23 ( 0.00%)   |    2.62    |    0.08    |   -21567.06   |   46853.00    |    46848.78     |
+|         Microtus_agrestis         |   0.01   |    2     |    1.29 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|       Rousettus_aegyptiacus       |   0.01   |    2     |    0.00 (45.88%)   |    0.00    |    0.13    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node163              |   0.01   |    2     |    0.43 ( 0.00%)   |    0.00    |    0.10    |   -21567.06   |   46853.02    |    46848.78     |
+|              Node17               |   0.01   |    2     |   51.28 ( 0.42%)   |    0.00    |    0.01    |   -21565.36   |   46849.62    |    46848.78     |
+|      Tachyglossus_aculeatus       |   0.01   |    2     |    0.00 (46.88%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node442              |   0.01   |    2     |    0.00 (49.43%)   |    0.00    |    0.12    |   -21567.05   |   46853.00    |    46848.78     |
+|            Lemur_catta            |   0.01   |    2     |    0.00 (46.97%)   |    0.00    |    0.13    |   -21567.05   |   46853.00    |    46848.78     |
+|          Gavia_stellata           |   0.01   |    2     |    5.06 ( 0.49%)   |    0.15    |    0.00    |   -21566.66   |   46852.20    |    46848.78     |
+|              Node264              |   0.01   |    2     |    0.00 (46.70%)   |    0.00    |    0.11    |   -21567.05   |   46853.00    |    46848.78     |
+|       Patagioenas_fasciata        |   0.01   |    2     |    1.48 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|       Hipposideros_larvatus       |   0.01   |    2     |    0.02 (74.60%)   |    0.38    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|        Cacatua_moluccensis        |   0.01   |    2     |    0.09 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|               Node3               |   0.01   |    2     |   0.04 (100.00%)   |    0.33    |    0.00    |   -21566.96   |   46852.81    |    46848.78     |
+|              Node324              |   0.01   |    2     |    3.81 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node281              |   0.01   |    2     |    0.00 ( 0.00%)   |    8.74    |    0.04    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node440              |   0.01   |    2     |    4.10 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node420              |   0.01   |    2     |    0.78 ( 0.00%)   |    0.00    |    0.01    |   -21567.06   |   46853.00    |    46848.78     |
+|        Callithrix_jacchus         |   0.01   |    2     |    0.55 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node292              |   0.01   |    2     |    0.00 (44.03%)   |    0.00    |    0.12    |   -21567.05   |   46853.00    |    46848.78     |
+|     Phaethornis_superciliosus     |   0.01   |    2     |    0.00 (45.15%)   |    0.00    |    0.12    |   -21567.05   |   46853.00    |    46848.78     |
+|     Polihierax_semitorquatus      |   0.01   |    2     |    3.29 ( 0.00%)   |    0.00    |    0.03    |   -21567.06   |   46853.01    |    46848.78     |
+|              Node408              |   0.01   |    2     |    0.01 (20.84%)   |    2.10    |    0.01    |   -21567.06   |   46853.00    |    46848.78     |
+|        Geothlypis_trichas         |   0.01   |    2     |    0.03 (41.79%)   |    0.00    |    0.00    |   -21567.07   |   46853.04    |    46848.78     |
+|       Trichosurus_vulpecula       |   0.01   |    2     |    0.22 ( 0.00%)   |    2.80    |    0.04    |   -21567.06   |   46853.00    |    46848.78     |
+|     Dromaius_novaehollandiae      |   0.01   |    2     |    0.00 (47.04%)   |    0.00    |    0.09    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node327              |   0.01   |    2     |    0.04 (40.42%)   |    0.00    |    0.00    |   -21567.06   |   46853.01    |    46848.78     |
+|        Urocitellus_parryii        |   0.01   |    2     |    0.00 (46.90%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node388              |   0.01   |    2     |    1.35 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|           Ara_ararauna            |   0.01   |    2     |    0.73 ( 4.67%)   |    0.00    |    0.00    |   -21566.42   |   46851.72    |    46848.78     |
+|         Lathamus_discolor         |   0.01   |    2     |    7.78 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node30               |   0.01   |    2     |    0.00 (45.31%)   |    0.00    |    0.13    |   -21567.05   |   46853.00    |    46848.78     |
+|        Arvicola_amphibius         |   0.01   |    2     |    1.17 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|        Caloenas_nicobarica        |   0.01   |    2     |    0.54 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node19               |   0.01   |    2     |    0.00 (45.66%)   |    0.00    |    0.11    |   -21567.05   |   46853.00    |    46848.78     |
+|        Petaurus_breviceps         |   0.01   |    2     |    0.00 (43.69%)   |    0.00    |    0.12    |   -21567.05   |   46853.00    |    46848.78     |
+|           Sylvia_borin            |   0.01   |    2     |    5.30 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|           Calypte_anna            |   0.01   |    2     |  770.39 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|         Fringilla_coelebs         |   0.01   |    2     |    0.00 (46.63%)   |    0.00    |    0.11    |   -21567.05   |   46853.00    |    46848.78     |
+|          Kogia_breviceps          |   0.01   |    2     |    1.65 ( 0.60%)   |    0.00    |    0.14    |   -21566.99   |   46852.88    |    46848.78     |
+|              Node502              |   0.01   |    2     |    1.80 ( 0.56%)   |    0.00    |    0.01    |   -21566.98   |   46852.85    |    46848.78     |
+|      Mesoplodon_densirostris      |   0.01   |    2     |    0.29 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node441              |   0.01   |    2     |    2.82 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node62               |   0.01   |    2     |    0.50 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|        Heliangelus_exortis        |   0.01   |    2     |    0.10 ( 5.10%)   |    0.00    |    0.00    |   -21567.06   |   46853.01    |    46848.78     |
+|            Alca_torda             |   0.01   |    2     |   37.34 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node183              |   0.01   |    2     |   15.64 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node56               |   0.01   |    2     |    0.00 (42.20%)   |    0.00    |    0.10    |   -21567.05   |   46853.00    |    46848.78     |
+|        Acrobates_pygmaeus         |   0.01   |    2     |    0.00 (46.88%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node309              |   0.01   |    2     |   12.31 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|         Tetrao_urogallus          |   0.01   |    2     |    0.74 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|          Ursus_maritimus          |   0.01   |    2     |    0.00 (42.20%)   |    0.00    |    0.10    |   -21567.05   |   46853.00    |    46848.78     |
+|        Meleagris_gallopavo        |   0.01   |    2     |    0.54 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|         Varecia_variegata         |   0.01   |    2     |    0.29 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|          Colobus_guereza          |   0.01   |    2     |    0.00 (46.96%)   |    0.00    |    0.10    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node212              |   0.01   |    2     |    1.17 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node280              |   0.01   |    2     |    0.00 (46.83%)   |    0.00    |    0.12    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node75               |   0.01   |    2     |    0.00 (38.46%)   |    0.00    |    0.12    |   -21567.05   |   46853.00    |    46848.78     |
+|         Pithecia_pithecia         |   0.01   |    2     |   12.71 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|         Apteryx_mantelli          |   0.01   |    2     |    0.26 ( 0.00%)   |    0.01    |    0.10    |   -21567.07   |   46853.03    |    46848.78     |
+|     Pipistrellus_pipistrellus     |   0.01   |    2     |    0.00 (47.13%)   |    0.00    |    0.13    |   -21567.05   |   46853.00    |    46848.78     |
+|         Nyctalus_leisleri         |   0.01   |    2     |    0.00 (47.13%)   |    0.00    |    0.13    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node193              |   0.01   |    2     |    0.30 ( 0.94%)   |    1.92    |    0.08    |   -21567.06   |   46853.02    |    46848.78     |
+|              Node70               |   0.01   |    2     |    1.95 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|        Aepyceros_melampus         |   0.01   |    2     |    9.58 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node333              |   0.01   |    2     |    0.00 (44.94%)   |    0.00    |    0.10    |   -21567.05   |   46853.00    |    46848.78     |
+|          Eudocimus_ruber          |   0.01   |    2     |    0.00 (48.31%)   |    0.00    |    0.13    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node200              |   0.01   |    2     |    0.31 ( 0.00%)   |    2.24    |    0.02    |   -21567.06   |   46853.00    |    46848.78     |
+|              Node210              |   0.01   |    2     |    0.00 (44.26%)   |    0.00    |    0.13    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node78               |   0.01   |    2     |    0.00 (44.26%)   |    0.00    |    0.13    |   -21567.05   |   46853.00    |    46848.78     |
+|        Eptesicus_nilssonii        |   0.01   |    2     |    0.00 (47.13%)   |    0.00    |    0.13    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node174              |   0.01   |    2     |    0.23 ( 0.00%)   |    3.26    |    0.07    |   -21567.06   |   46853.00    |    46848.78     |
+|              Node476              |   0.01   |    2     |   51.64 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node396              |   0.01   |    2     |    0.00 (44.87%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node329              |   0.01   |    2     |    3.77 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node407              |   0.01   |    2     |    0.00 (45.60%)   |    0.00    |    0.11    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node343              |   0.01   |    2     |    0.00 (47.21%)   |    0.00    |    0.12    |   -21567.05   |   46853.00    |    46848.78     |
+|         Muntiacus_reevesi         |   0.01   |    2     |    0.00 ( 0.00%)   |    5.93    |    0.03    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node399              |   0.01   |    2     |    6.62 ( 0.60%)   |    0.00    |    0.01    |   -21566.78   |   46852.45    |    46848.78     |
+|              Node175              |   0.01   |    2     |    0.00 (48.71%)   |    0.00    |    0.13    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node130              |   0.01   |    2     |    0.00 (44.03%)   |    0.00    |    0.13    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node456              |   0.01   |    2     |    0.02 (30.74%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node186              |   0.01   |    2     |    0.37 ( 0.67%)   |    0.00    |    0.01    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node144              |   0.01   |    2     |    0.00 (46.15%)   |    0.00    |    0.10    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node158              |   0.01   |    2     |    1.46 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node403              |   0.01   |    2     |    0.00 (47.79%)   |    0.00    |    0.15    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node80               |   0.01   |    2     |    0.55 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|        Tympanuchus_cupido         |   0.01   |    2     |    0.59 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|          Ovis_canadensis          |   0.01   |    2     |    0.00 (48.31%)   |    0.00    |    0.13    |   -21567.05   |   46853.00    |    46848.78     |
+|           Rhea_pennata            |   0.01   |    2     |    0.00 (47.13%)   |    0.00    |    0.13    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node448              |   0.01   |    2     |    0.00 (50.53%)   |    0.00    |    0.12    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node229              |   0.01   |    2     |    0.50 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|          Sterna_hirundo           |   0.01   |    2     |    0.00 (48.31%)   |    0.00    |    0.13    |   -21567.05   |   46853.00    |    46848.78     |
+|          Megascops_asio           |   0.01   |    2     |    2.84 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node233              |   0.01   |    2     |    0.00 (47.32%)   |    0.00    |    0.12    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node154              |   0.01   |    2     |    0.89 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node303              |   0.01   |    2     |    0.00 (48.31%)   |    0.00    |    0.13    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node115              |   0.01   |    2     |    0.86 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node201              |   0.01   |    2     |   27.18 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|             Grus_grus             |   0.01   |    2     |    1.10 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|        Cossypha_polioptera        |   0.01   |    2     |    0.08 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|        Sylvia_atricapilla         |   0.01   |    2     |    0.00 (46.96%)   |    0.00    |    0.10    |   -21567.05   |   46853.00    |    46848.78     |
+|     Ornithorhynchus_anatinus      |   0.01   |    2     |    1.72 ( 0.58%)   |    0.00    |    0.00    |   -21566.92   |   46852.73    |    46848.78     |
+|              Node207              |   0.00   |    2     |    0.00 (46.87%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node161              |   0.00   |    2     |    0.00 (44.75%)   |    0.00    |    0.13    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node241              |   0.00   |    2     |    0.00 (46.87%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|        Streptopelia_turtur        |   0.00   |    2     |    0.00 (47.59%)   |    0.00    |    0.12    |   -21567.05   |   46853.00    |    46848.78     |
+|         Sciurus_vulgaris          |   0.00   |    2     |    0.00 (46.87%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node282              |   0.00   |    2     |    4.02 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node411              |   0.00   |    2     |   14.63 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node18               |   0.00   |    2     |    0.00 (46.87%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|     Symphalangus_syndactylus      |   0.00   |    2     |    0.00 (46.87%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|         Rangifer_tarandus         |   0.00   |    2     |    0.55 ( 0.00%)   |   11.40    |    0.02    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node501              |   0.00   |    2     |    0.00 (46.87%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|           Lagopus_muta            |   0.00   |    2     |    0.00 (42.30%)   |    0.00    |    0.06    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node10               |   0.00   |    2     |    0.00 (44.54%)   |    0.00    |    0.11    |   -21567.05   |   46853.00    |    46848.78     |
+|         Procavia_capensis         |   0.00   |    2     |    0.36 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node111              |   0.00   |    2     |  117.87 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|       Artibeus_jamaicensis        |   0.00   |    2     |    0.00 (46.87%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node104              |   0.00   |    2     |    0.00 (46.87%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node140              |   0.00   |    2     |    4.15 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|         Sarcoramphus_papa         |   0.00   |    2     |    0.00 (42.30%)   |    0.00    |    0.06    |   -21567.05   |   46853.00    |    46848.78     |
+|    Lagenorhynchus_albirostris     |   0.00   |    2     |    0.00 (46.80%)   |    0.00    |    0.12    |   -21567.05   |   46853.00    |    46848.78     |
+|         Inia_geoffrensis          |   0.00   |    2     |    0.00 (46.80%)   |    0.00    |    0.12    |   -21567.05   |   46853.00    |    46848.78     |
+|        Myotis_daubentonii         |   0.00   |    2     |    0.00 (42.30%)   |    0.00    |    0.06    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node235              |   0.00   |    2     |    0.40 ( 0.15%)   |    0.00    |    0.02    |   -21567.06   |   46853.00    |    46848.78     |
+|            Lutra_lutra            |   0.00   |    2     |    0.00 (42.96%)   |    0.00    |    0.09    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node389              |   0.00   |    2     |    2.60 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node495              |   0.00   |    2     |    0.00 (44.09%)   |    0.00    |    0.06    |   -21567.05   |   46853.00    |    46848.78     |
+|        Accipiter_gentilis         |   0.00   |    2     |    0.00 (46.99%)   |    0.00    |    0.11    |   -21567.05   |   46853.00    |    46848.78     |
+|         Gypaetus_barbatus         |   0.00   |    2     |    0.00 (44.65%)   |    0.00    |    0.09    |   -21567.05   |   46853.00    |    46848.78     |
+|          Phoca_vitulina           |   0.00   |    2     |    1.18 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|       Sciurus_carolinensis        |   0.00   |    2     |    0.00 (46.87%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|            Strix_aluco            |   0.00   |    2     |    0.02 (25.56%)   |    0.00    |    0.00    |   -21567.06   |   46853.00    |    46848.78     |
+|        Bucephala_clangula         |   0.00   |    2     |    0.92 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node169              |   0.00   |    2     |    0.87 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node487              |   0.00   |    2     |    0.00 (41.73%)   |    0.00    |    0.09    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node412              |   0.00   |    2     |  108.42 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|               Node8               |   0.00   |    2     |    0.00 (46.98%)   |    0.00    |    0.12    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node230              |   0.00   |    2     |    0.00 (46.87%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|     Passerculus_sandwichensis     |   0.00   |    2     |    0.00 (47.59%)   |    0.00    |    0.12    |   -21567.05   |   46853.00    |    46848.78     |
+|          Nesoenas_mayeri          |   0.00   |    2     |    0.00 (46.90%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|         Plecotus_auritus          |   0.00   |    2     |    0.00 (46.90%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node425              |   0.00   |    2     |    0.00 (46.88%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node77               |   0.00   |    2     |    0.00 (46.89%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node191              |   0.00   |    2     |    0.00 (45.27%)   |    0.00    |    0.10    |   -21567.05   |   46853.00    |    46848.78     |
+|       Streptopelia_decaocto       |   0.00   |    2     |    0.00 (46.90%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node358              |   0.00   |    2     |    0.23 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node354              |   0.00   |    2     |    0.00 (46.90%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node219              |   0.00   |    2     |    0.00 (46.90%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|         Saguinus_oedipus          |   0.00   |    2     |    0.00 (46.90%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|     Theristicus_caerulescens      |   0.00   |    2     |    0.00 (46.90%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node242              |   0.00   |    2     |    0.00 (46.90%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node50               |   0.00   |    2     |    0.00 (46.90%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node160              |   0.00   |    2     |    0.00 (46.90%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|           Martes_martes           |   0.00   |    2     |    0.00 (46.90%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node87               |   0.00   |    2     |    0.00 (46.90%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|    Balaenoptera_acutorostrata     |   0.00   |    2     |    0.00 (46.90%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node55               |   0.00   |    2     |    0.00 (46.90%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|        Eudorcas_thomsonii         |   0.00   |    2     |    0.00 (46.90%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|            Nanger_dama            |   0.00   |    2     |    0.00 (46.90%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|         Myotis_nattereri          |   0.00   |    2     |    0.00 (46.90%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|       Leucopsar_rothschildi       |   0.00   |    2     |    0.00 (43.45%)   |    0.00    |    0.09    |   -21567.05   |   46853.00    |    46848.78     |
+|         Larus_michahellis         |   0.00   |    2     |    0.00 (46.90%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node102              |   0.00   |    2     |    0.90 ( 0.00%)   |    0.00    |    0.01    |   -21567.06   |   46853.00    |    46848.78     |
+|           Vulpes_vulpes           |   0.00   |    2     |    1.17 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|            Aix_sponsa             |   0.00   |    2     |    0.00 (46.90%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node345              |   0.00   |    2     |    0.52 ( 0.00%)   |    0.00    |    0.00    |   -21567.06   |   46853.00    |    46848.78     |
+|              Node384              |   0.00   |    2     |    0.88 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|            Anas_acuta             |   0.00   |    2     |    0.00 (46.90%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node474              |   0.00   |    2     |    0.00 (46.90%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|           Netta_rufina            |   0.00   |    2     |    0.29 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|        Corvus_hawaiiensis         |   0.00   |    2     |    0.00 (46.90%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|          Lorius_garrulus          |   0.00   |    2     |    0.00 (46.90%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node394              |   0.00   |    2     |   19.60 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node285              |   0.00   |    2     |    0.00 (46.90%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node385              |   0.00   |    2     |    0.04 ( 2.14%)   |    8.79    |    0.02    |   -21567.05   |   46852.99    |    46848.78     |
+|        Artibeus_lituratus         |   0.00   |    2     |    0.00 (46.90%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node322              |   0.00   |    2     |    0.00 (44.87%)   |    0.00    |    0.11    |   -21567.05   |   46853.00    |    46848.78     |
+|       Acridotheres_tristis        |   0.00   |    2     |    0.00 (46.87%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|         Melospiza_melodia         |   0.00   |    2     |    0.00 (46.91%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node54               |   0.00   |    2     |    0.00 (46.90%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|     Rhinolophus_ferrumequinum     |   0.00   |    2     |    0.00 (46.90%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node131              |   0.00   |    2     |    0.00 (46.88%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node25               |   0.00   |    2     |    0.00 (48.73%)   |    0.00    |    0.09    |   -21567.05   |   46853.00    |    46848.78     |
+|               Node7               |   0.00   |    2     |    0.00 (46.85%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node79               |   0.00   |    2     |    0.00 (46.92%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node307              |   0.00   |    2     |    0.00 (46.90%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|     Rhinolophus_hipposideros      |   0.00   |    2     |    0.00 (46.90%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node47               |   0.00   |    2     |    0.00 (46.92%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node238              |   0.00   |    2     |    0.00 (46.92%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node24               |   0.00   |    2     |    0.00 (46.88%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node274              |   0.00   |    2     |    0.00 (46.90%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node142              |   0.00   |    2     |    0.00 (46.88%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node352              |   0.00   |    2     |    0.00 (46.92%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node473              |   0.00   |    2     |    0.00 (46.92%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|          Papio_hamadryas          |   0.00   |    2     |    0.00 (46.92%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|         Myotis_mystacinus         |   0.00   |    2     |    0.00 (46.92%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|           Pongo_abelii            |   0.00   |    2     |    0.00 (46.92%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|         Mandrillus_sphinx         |   0.00   |    2     |    0.00 (46.92%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|        Globicephala_melas         |   0.00   |    2     |    0.00 (46.92%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|        Eubalaena_glacialis        |   0.00   |    2     |    0.00 (46.92%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|        Loxodonta_africana         |   0.00   |    2     |    0.00 (46.92%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|            Canis_lupus            |   0.00   |    2     |    0.00 (46.92%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node369              |   0.00   |    2     |    0.00 (46.92%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node372              |   0.00   |    2     |    0.00 (46.92%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|        Litocranius_walleri        |   0.00   |    2     |    0.00 (46.92%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|         Lontra_canadensis         |   0.00   |    2     |    0.00 (46.92%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node353              |   0.00   |    2     |    0.00 (46.92%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node58               |   0.00   |    2     |    0.00 (46.92%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node376              |   0.00   |    2     |    0.00 (46.92%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|      Zalophus_californianus       |   0.00   |    2     |    0.00 (46.92%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|         Aquila_chrysaetos         |   0.00   |    2     |    0.00 (46.92%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|          Lynx_canadensis          |   0.00   |    2     |    0.00 (46.92%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node457              |   0.00   |    2     |    0.00 (46.92%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node38               |   0.00   |    2     |    0.00 (46.92%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node459              |   0.00   |    2     |    0.00 (46.92%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|        Spheniscus_demersus        |   0.00   |    2     |    0.00 (46.92%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node464              |   0.00   |    2     |    0.95 ( 0.00%)   |    0.00    |    0.00    |   -21567.05   |   46853.00    |    46848.78     |
+|           Cygnus_cygnus           |   0.00   |    2     |    0.00 (46.92%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node491              |   0.00   |    2     |    0.00 (46.92%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node306              |   0.00   |    2     |    3.93 ( 0.45%)   |    0.00    |    0.00    |   -21566.83   |   46852.55    |    46848.78     |
+|            Anser_anser            |   0.00   |    2     |    0.00 (46.92%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node83               |   0.00   |    2     |    1.16 ( 0.70%)   |    0.00    |    0.00    |   -21566.99   |   46852.87    |    46848.78     |
+|              Node90               |   0.00   |    2     |    0.77 ( 0.00%)   |    0.00    |    0.01    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node84               |   0.00   |    2     |    0.77 ( 0.00%)   |    0.00    |    0.01    |   -21567.06   |   46853.00    |    46848.78     |
+|              Node475              |   0.00   |    2     |    0.00 (46.92%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node480              |   0.00   |    2     |    0.00 (46.92%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|           Aythya_ferina           |   0.00   |    2     |    0.00 (46.92%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|         Aix_galericulata          |   0.00   |    2     |    0.00 (46.92%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|        Corvus_moneduloides        |   0.00   |    2     |    0.00 (46.92%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|        Heterohyrax_brucei         |   0.00   |    2     |    0.00 (46.94%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node218              |   0.00   |    2     |    0.00 (46.93%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node23               |   0.00   |    2     |    0.00 (46.92%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node110              |   0.00   |    2     |    0.00 (46.90%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node209              |   0.00   |    2     |    0.00 (46.93%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node170              |   0.00   |    2     |    0.00 (46.91%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node287              |   0.00   |    2     |    0.00 (46.93%)   |    0.00    |    0.14    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node499              |   0.00   |    2     |    0.00 (50.00%)   |    0.01    |    0.10    |   -21567.05   |   46853.00    |    46848.78     |
+|         Neofelis_nebulosa         |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|           Milvus_milvus           |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|       Anser_brachyrhynchus        |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|         Delphinus_delphis         |   0.00   |    2     |    0.00 (51.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|         Mustela_nigripes          |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|         Acinonyx_jubatus          |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|         Mustela_putorius          |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|         Mustela_lutreola          |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|        Anas_platyrhynchos         |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|          Mustela_erminea          |   0.00   |    2     |    0.00 (51.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|         Clangula_hyemalis         |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|         Falco_peregrinus          |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|    Chroicocephalus_ridibundus     |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|          Elephas_maximus          |   0.00   |    2     |    0.00 (51.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|          Falco_naumanni           |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|          Gorilla_gorilla          |   0.00   |    2     |    0.00 (51.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|           Falco_cherrug           |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|              Node338              |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|          Falco_punctatus          |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|          Falco_biarmicus          |   0.00   |    2     |    0.00 (51.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|         Falco_rusticolus          |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|       Choloepus_didactylus        |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|        Melospiza_georgiana        |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|       Balaenoptera_musculus       |   0.00   |    2     |    0.00 (51.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|           Macaca_nigra            |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|           Lycaon_pictus           |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|            Buteo_buteo            |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|          Aythya_fuligula          |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|           Puma_concolor           |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|            Lorius_lory            |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|         Macaca_nemestrina         |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|          Rhea_americana           |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|            Cygnus_olor            |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|       Spheniscus_humboldti        |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|            Sus_scrofa             |   0.00   |    2     |    0.00 (51.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|           Panthera_onca           |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|       Stenella_coeruleoalba       |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|          Panthera_pardus          |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|       Lagenorhynchus_acutus       |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|          Panthera_uncia           |   0.00   |    2     |    0.00 (51.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|          Phocoena_sinus           |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|          Panthera_tigris          |   0.00   |    2     |    0.00 (51.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|         Phocoena_phocoena         |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|          Pan_troglodytes          |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|       Haliaeetus_albicilla        |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|      Phacochoerus_africanus       |   0.00   |    2     |    0.00 (51.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|           Pan_paniscus            |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|       Pipistrellus_pygmaeus       |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|           Orcinus_orca            |   0.00   |    2     |    0.00 (51.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|          Pongo_pygmaeus           |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|           Panthera_leo            |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+|     Haliaeetus_leucocephalus      |   0.00   |    2     |    0.00 ( 2.00%)   |    0.20    |    5.00    |   -21567.05   |   46853.00    |    46848.78     |
+
+### Rate class analyses summary
+*  1 branches with **3** rate classes
+*  445 branches with **1** rate classes
+*  1 branches with **2** rate classes
+
+### Improving parameter estimates of the adaptive rate class model
+* Log(L) = -21312.68, AIC-c = 46340.02 (1808 estimated parameters)
+
+
+### **Synonymous tree** 
+(((((((Trichosurus_vulpecula:0.008324084506755673,(Petaurus_breviceps:0.00839359421774734,Acrobates_pygmaeus:0.0076374493352094)Node10:0.004123330417864324)Node8:0.003791788250924759,Phascolarctos_cinereus:0.01311654393152851)Node7:0.001831484091447698,Dromiciops_gliroides:0.02462977089608608)Node6:0.01281987223976101,Monodelphis_domestica:0.026171995982198)Node5:0.04016388313981434,((((Suncus_etruscus:0.09576284013207832,Talpa_europaea:0.03091104033604549)Node19:0.007302969592216935,(((Manis_pentadactyla:0.04470577563886834,((Suricata_suricatta:0.02885819977821501,(Lynx_canadensis:0.001319466257181473,Acinonyx_jubatus:0,Puma_concolor:0,Neofelis_nebulosa:0,(Panthera_tigris:0,Panthera_uncia:0,Panthera_onca:0,Panthera_leo:0,Panthera_pardus:0)Node38:0.001320445886140029)Node30:0.008945656003408728)Node28:0.01239130381447361,((Vulpes_vulpes:0.001344710669891364,(Canis_lupus:0.001353085734550155,Lycaon_pictus:0)Node50:0.002756551118442738)Node48:0.0148297222216569,(((Martes_martes:0.002770340807844869,((Mustela_erminea:0,Mustela_nigripes:0,Mustela_putorius:0,Mustela_lutreola:0)Node62:0.006813059816433024,Lutra_lutra:0.004074255686223645,Lontra_canadensis:0.001353127645152743)Node58:0.001315690469801654)Node56:0.00794427383143574,Procyon_lotor:0.004792261375430608)Node55:0.002694825240397025,(Zalophus_californianus:0.001354919859417358,Phoca_vitulina:0.002717032978911113)Node70:0.00551153254301297)Node54:0.002244140035616338,Ursus_maritimus:0.007391707671295406)Node47:0.001957711134856004)Node27:0.01085611297801121)Node25:0.001636643996733135,Equus_caballus:0.1468125262721754)Node24:0.002370440734573932,(Camelus_dromedarius:0.01542862798134062,(((((Eubalaena_glacialis:0.001372779365254363,(Balaenoptera_musculus:0,Balaenoptera_acutorostrata:0.002736445963354604)Node104:0.004173177945903253)Node102:0.001369190028229903,Kogia_breviceps:0.006928413663410578,((Inia_geoffrensis:0.00413745046863707,(Phocoena_sinus:0,Phocoena_phocoena:0)Node87:0.002748027299391743,(Orcinus_orca:0,Lagenorhynchus_albirostris:0.004135798974715436,Lagenorhynchus_acutus:0,Globicephala_melas:0.001368207910672256,Delphinus_delphis:0,Stenella_coeruleoalba:0)Node90:0)Node84:0,Mesoplodon_densirostris:0.006918643316614906)Node83:0)Node80:0.004406974535597818,Hippopotamus_amphibius:0.01447659872711493)Node79:0.001808354768505178,(Antilocapra_americana:0.01642889145818368,((Tragelaphus_strepsiceros:0.01399777159948835,Aepyceros_melampus:0.005443472175070407,(Litocranius_walleri:0.001349337439864545,Nanger_dama:0.002710594688035136,Eudorcas_thomsonii:0.00271278664574045)Node115:0.004073408365367776,Addax_nasomaculatus:0.01375079376675375,Ovis_canadensis:0.005441620508984446)Node111:0.001606874942524657,(Muntiacus_reevesi:0.00554360668360684,Rangifer_tarandus:0.003876524099992807)Node124:0.01377984877524567)Node110:0.0006117432330161806)Node108:0.01653996749935195)Node78:0.006695761699148701,(Phacochoerus_africanus:0,Sus_scrofa:0)Node127:0.0214138126904632)Node77:0.003272253349129167)Node75:0.005816718964917669)Node23:0.001198993557088228,(((Hipposideros_larvatus:0.004116568932123602,(Rhinolophus_ferrumequinum:0.001776252769774661,Rhinolophus_hipposideros:0.00222002673374049)Node134:0.01716393018923839)Node132:0.02172486356907876,(Rousettus_aegyptiacus:0.01120978013628229,Eidolon_helvum:0.01200893943619207)Node137:0.01413580676388219)Node131:0.00182987071706686,(Rhynchonycteris_naso:0.05555977038327991,(((Phyllostomus_discolor:0.015578543007309,Carollia_perspicillata:0.02098570727950253,(Artibeus_lituratus:0.0024870122896161,Artibeus_jamaicensis:0.004085028794354718)Node147:0.02141859327198828)Node144:0.006168204218126969,Macrotus_californicus:0.02155806568289467)Node143:0.01469486901696142,(((Myotis_daubentonii:0.004120716435250767,Myotis_nattereri:0.00271221402672327)Node154:0.004115661068437082,Myotis_mystacinus:0.001386572597755719)Node153:0.01078559651937543,(Plecotus_auritus:0.003142808331535179,((Vespertilio_murinus:0.05538373059154102,(Nyctalus_leisleri:0.006847027991032394,Pipistrellus_pygmaeus:0,Pipistrellus_pipistrellus:0.006860659542735716)Node163:0.009917413533532437)Node161:0.004631007338218995,Eptesicus_nilssonii:0.006725608674241299)Node160:0.00276615209631528)Node158:0.005000762954823035)Node152:0.0220991860622964)Node142:0)Node140:0.002617123963536921)Node130:0.007428162638045392)Node18:0.004336866392547931,(((Oryctolagus_cuniculus:0.02300918561648499,Ochotona_princeps:0.05419951813817352)Node171:0.02153202717531199,((Muscardinus_avellanarius:0.04199982545001171,(Urocitellus_parryii:0.01039048537163818,(Sciurus_carolinensis:0.003709346761690757,Sciurus_vulgaris:0.004774738467613994)Node179:0.02137602260229336)Node177:0.01550324867265209)Node175:0.005723131964747156,(((((Microtus_agrestis:0.009887705890355923,Chionomys_nivalis:0.01716636613609143)Node186:0.00381188144763975,Arvicola_amphibius:0.007812273059244159)Node185:0.0464521363880784,((Rattus_norvegicus:0.01987293507091675,(Mus_musculus:0.0247494570636312,Apodemus_sylvaticus:0.01527263511727494)Node193:0.006048383635967388)Node191:0.003374115642321316,Micromys_minutus:0.04138764744148102)Node190:0.009509234224077946)Node184:0.08066493795264067,Thomomys_bottae:0.04490612655047694)Node183:0.001990381221847641,(Heterocephalus_glaber:0.04820868695198849,((Octodon_degus:0.07306610617550974,Chinchilla_lanigera:0.03186958924185316)Node201:0.001908530515446352,(Dasyprocta_punctata:0.04478302830671307,Hydrochoerus_hydrochaeris:0.03050475227803574)Node204:0.03564349752262564)Node200:0.0009119023919298151)Node198:0.1409994801376567)Node182:0.01598771533381345)Node174:0.005563870858010194)Node170:0.0008772212354007445,(Cynocephalus_volans:0.02339420640319574,((Nycticebus_coucang:0.02925771898754745,(Varecia_variegata:0.005991566180820799,Lemur_catta:0.0107914730364601)Node212:0.006062370045049899)Node210:0.006359150166241432,((Pithecia_pithecia:0.004359238002902261,((Leontopithecus_chrysomelas:0.005728255062344915,Cebuella_pygmaea:0.01063900214145543,Callithrix_jacchus:0.00854763085759519,Saguinus_imperator:0.007005275120739857,Saguinus_oedipus:0.002865142653854185)Node219:0.002902052215322979,Saimiri_boliviensis:0.009862113243433977)Node218:0.001257836022540428)Node216:0.01116524650229202,((Symphalangus_syndactylus:0.004470991443319244,(Gorilla_gorilla:0,(Pan_paniscus:0,Pan_troglodytes:0)Node235:0.002783964323839009)Node233:0.005357660039699784,(Pongo_pygmaeus:0,Pongo_abelii:0.001392173941215079)Node238:0.001666558398406118)Node230:0.003440102493637057,((Papio_hamadryas:0.001396052870076721,Mandrillus_sphinx:0.001386710392131218,Macaca_nemestrina:0,Macaca_nigra:0)Node242:0.002760447194498746,Colobus_guereza:0.007236769756966246)Node241:0.004925610777150961)Node229:0.004066306793297174)Node215:0.0129768153838298)Node209:0.002130727498914159)Node207:0.004676219921315831)Node169:0)Node17:0.009767039630296371,(((Loxodonta_africana:0.001336533892938902,Elephas_maximus:0)Node258:0.01920596526618793,(Heterohyrax_brucei:0.001285906495426931,Procavia_capensis:0.002826748289447704)Node254:0.0227044094032039,Dugong_dugon:0.02267932608923812)Node252:0.007955909063123065,Rhynchocyon_petersi:0.05137567856904553)Node251:0.01196687266227174,(Dasypus_novemcinctus:0.02851855545727856,(Tamandua_tetradactyla:0.0221029629326779,Choloepus_didactylus:0)Node264:0.01051298905344692)Node262:0.01081951745473185)Node16:0.08487190656741621)Node4:0.0164606817756512,(Tachyglossus_aculeatus:0.01206552321653144,Ornithorhynchus_anatinus:0.002649994482066184)Node267:0.06821150625516566)Node3:0.002099311099554553,(((Rhea_pennata:0.005410116712684495,Rhea_americana:0)Node277:0.01490140810529769,Eudromia_elegans:0.04181400284164798,(Apteryx_mantelli:0.005673292362062291,Dromaius_novaehollandiae:0.009589645469171444)Node274:0.001550678711007531)Node271:0.0126100769898738,(((Tauraco_erythrolophus:0.02526670948310935,(Caprimulgus_europaeus:0.03519518134251599,((Apus_apus:0.0233645406852714,(Phaethornis_superciliosus:0.009365831354468159,(Calypte_anna:0.006926860517307665,Heliangelus_exortis:0.006574448986177014)Node292:0.01011379334331365)Node290:0.02954006004399675)Node288:0.01781441911882042,Podargus_strigoides:0.02081645918242557)Node287:5.546328263062925e-05,Nyctibius_grandis:0.009803887684141732)Node285:0.002647115325572052,((((Megascops_asio:0.002721338374941642,Strix_aluco:0.002661961343085246)Node366:0.01064023614304148,Leptosomus_discolor:0.02318577371736559,Trogon_surrucura:0.04506188904215358,(Momotus_momota:0.03509698258100927,(Dryobates_pubescens:0.01550770406767833,Ramphastos_swainsonii:0.01930151124378003)Node360:0.01336222379317719)Node358:0.001136766607762717,Bucorvus_abyssinicus:0.02931621948726822)Node354:0.00297496253484576,((Gypaetus_barbatus:0.003965979073752569,(Aquila_chrysaetos:0.001325717326964551,Accipiter_gentilis:0.004011304227405174,Buteo_buteo:0,(Milvus_milvus:0,Haliaeetus_albicilla:0,Haliaeetus_leucocephalus:0)Node376:0.001331840559387737)Node372:0.001385394034673303)Node370:0.01553503224431433,Sarcoramphus_papa:0.004081971701812817)Node369:0.001469645721236221)Node353:0.001340948789125336,(((((((Agapornis_nigrigenis:0.1244362759521758,Agapornis_fischeri:0.01277655730661193)Node399:0.003554395885667845,Melopsittacus_undulatus:0.01185466760812339,Lathamus_discolor:0.006559011259197442,(Trichoglossus_haematodus:0.1820066072810597,(Lorius_garrulus:0.002568417420635918,Lorius_lory:0)Node396:0.004448845669412419)Node394:0.003319601120561889)Node389:0.002737620180012775,Ara_ararauna:0.002579762202982653)Node388:0.005385322253891938,(Cacatua_moluccensis:0.005327817709785735,Nymphicus_hollandicus:0.007952702031519895)Node403:0.005411296378486624)Node387:0.02142624026701398,((((((Leiothrix_lutea:0.02026295982737757,(Sylvia_borin:0.005854309412915124,Sylvia_atricapilla:0.005031220503230921)Node414:0.00995531281595188)Node412:0.0006554928436026163,Hirundo_rustica:0.02120331170168824)Node411:0.002251966034130917,Poecile_atricapillus:0.0100274453086495,((Acridotheres_tristis:0.003481685117244002,Leucopsar_rothschildi:0.001420332713984752)Node421:0.007529248972323728,(Catharus_ustulatus:0.02353924485720631,(Cossypha_polioptera:0.0009731250297744745,Erithacus_rubecula:0.02979359956658647)Node427:0.02569804657606426)Node425:0.003023688593759954,Cinclus_cinclus:0.01231703040908753)Node420:0.008749926803671359,(Corvus_moneduloides:0.001215201102031971,(Taeniopygia_guttata:0.0148163782235014,Vidua_chalybeata:0.01738524457340054)Node435:0.06308889105091126,Corvus_hawaiiensis:0.002528379686617708)Node432:0.03088766713660873,((((Passerculus_sandwichensis:0.00335178453578838,Melospiza_melodia:0.002227880209919106,Melospiza_georgiana:0)Node442:0.01056557750545796,Geothlypis_trichas:0.005844307565606318)Node441:0.005351398135532784,(Haemorhous_mexicanus:0.00851340413382576,Fringilla_coelebs:0.007990335057590501)Node448:0.005304814770819997)Node440:0.008807757133775742,Passer_domesticus:0.01322301828616366)Node439:0.04404190902454896)Node409:0.05652427944503674,Pitta_sordida:0.04430856326505301)Node408:0.008101644463987473,Acanthisitta_chloris:0.05295746424139352)Node407:0.006931376922538885,Chiroxiphia_lanceolata:0.05373886436415887)Node406:0.02932949846320862)Node386:0.01158365226211148,(((Falco_peregrinus:0,(Falco_biarmicus:0,Falco_cherrug:0,Falco_rusticolus:0)Node459:0.0013153648163673)Node457:0.001320870875672991,(Falco_punctatus:0,Falco_naumanni:0)Node464:0)Node456:0,Polihierax_semitorquatus:0.007644714825294011)Node455:0.01830384021856342)Node385:0.001480916927536849,Cariama_cristata:0.01207979699263113)Node384:0)Node352:0.001471605745112112,Opisthocomus_hoazin:0.03139356577701045,(Pterocles_gutturalis:0.02038503987541238,(Caloenas_nicobarica:0.00724025471609845,((Columba_livia:0.01146742651295217,(Streptopelia_decaocto:0.003112421489624876,Streptopelia_turtur:0.004809763738777562)Node345:0.00132392309400269,Nesoenas_mayeri:0.003170420533133887)Node343:0.006545149432949734,Patagioenas_fasciata:0.009234080544772046)Node342:0.01199962761572954)Node340:0.02400905382241388)Node338:0.0005818632314037367,(((Alca_torda:0.005310069149566031,Sterna_hirundo:0.005369559029255192,(Larus_michahellis:0.002651543989176517,Chroicocephalus_ridibundus:0)Node333:0.00670501353011427)Node329:0.003650872591832797,Numenius_arquata:0.01515377625738272)Node328:0.007519634918002774,Pluvialis_apricaria:0.01862481675943639)Node327:0.00563301889011289,((Eurypyga_helias:0.02371570134529269,Rhynochetos_jubatus:0.02317403647403248)Node319:0.03323306236829424,Gavia_stellata:0.008220638904193101,((Ciconia_ciconia:0.01164607473745728,(Theristicus_caerulescens:0.002815967654464518,Eudocimus_ruber:0.006675523146727077)Node309:0.006212829880764693,Scopus_umbretta:0.01888582846716166)Node307:0.001887141027028671,Morus_bassanus:0.0272699850309248)Node306:0,(Spheniscus_demersus:0.00131723163663521,Spheniscus_humboldti:0)Node315:0.01223938547153248)Node303:0.00539482858489232,(Gallinula_chloropus:0.05331567901937315,(Balearica_regulorum:0.01234632091244094,Grus_grus:0.00406721743935982)Node324:0.007174722325203341)Node322:0.002704712730412909)Node282:0.002304906498713541,Cuculus_canorus:0.03643248030157386)Node281:0.009944431388708867,(((Aix_galericulata:0.001278677321137812,Aix_sponsa:0.002625125306643375)Node495:0.004023484256184789,((((Anas_platyrhynchos:0,Anas_acuta:0.002587292395931137)Node476:0.005182528191635461,(Aythya_ferina:0.001280061208585325,Aythya_fuligula:0)Node480:0.001279733972035802,Netta_rufina:0.001278762883364199)Node475:0.001279401080866552,Clangula_hyemalis:0)Node474:0.00257483490137155,Bucephala_clangula:0)Node473:0.001414891807458401,(((Cygnus_olor:0,Cygnus_cygnus:0.001297190245867587)Node491:0.001296725137747929,Anser_anser:0.001293066410228666,Anser_brachyrhynchus:0)Node487:0.003845384898621778,Oxyura_jamaicensis:0.01631722399151691)Node486:0.01069322222569516)Node471:0.03033640919600972,(((((Tympanuchus_cupido:0.004307999823271308,Tetrao_urogallus:0.006143090729834745,Lagopus_muta:0.004310167626653881)Node502:0.006952660482671627,Meleagris_gallopavo:0.00597490921661467)Node501:0.004281391260198044,Pavo_cristatus:0.01811190148887379,Gallus_gallus:0.0114635235548036)Node500:0.01011471387308128,Colinus_virginianus:0.02236260654457639)Node499:0,Numida_meleagris:0.02512217192889772)Node498:0.01840074593055738)Node470:0.01538761274757035)Node280:0.005924329402949261)Node270:0.0951232736280692,Ascaphus_truei:0.2247423983882364)
+**Non-synonymous tree** 
+(((((((Trichosurus_vulpecula:0.001294398651645546,(Petaurus_breviceps:0,Acrobates_pygmaeus:0)Node10:0)Node8:0,Phascolarctos_cinereus:0.001290724661141348)Node7:0,Dromiciops_gliroides:0)Node6:0.001277540397121852,Monodelphis_domestica:0)Node5:0.01030606299732633,((((Suncus_etruscus:0.009061967009824251,Talpa_europaea:0.001288533966920288)Node19:0,(((Manis_pentadactyla:0.001269931969119295,((Suricata_suricatta:0,(Lynx_canadensis:0,Acinonyx_jubatus:0,Puma_concolor:0,Neofelis_nebulosa:0,(Panthera_tigris:0,Panthera_uncia:0,Panthera_onca:0,Panthera_leo:0,Panthera_pardus:0)Node38:0)Node30:0)Node28:0,((Vulpes_vulpes:0.001270322568453346,(Canis_lupus:0,Lycaon_pictus:0)Node50:0)Node48:0,(((Martes_martes:0,((Mustela_erminea:0,Mustela_nigripes:0,Mustela_putorius:0,Mustela_lutreola:0)Node62:0.001267308157304598,Lutra_lutra:0,Lontra_canadensis:0)Node58:0)Node56:0,Procyon_lotor:0.007966676491906207)Node55:0,(Zalophus_californianus:0,Phoca_vitulina:0.001269503155550889)Node70:0.001269611097551095)Node54:0,Ursus_maritimus:0)Node47:0)Node27:0.001269323609889392)Node25:0,Equus_caballus:0.005056754514076472)Node24:0,(Camelus_dromedarius:0.002544292227265229,(((((Eubalaena_glacialis:0,(Balaenoptera_musculus:0,Balaenoptera_acutorostrata:0)Node104:0)Node102:0.001272113735359731,Kogia_breviceps:0.001271202775858535,((Inia_geoffrensis:0,(Phocoena_sinus:0,Phocoena_phocoena:0)Node87:0,(Orcinus_orca:0,Lagenorhynchus_albirostris:0,Lagenorhynchus_acutus:0,Globicephala_melas:0,Delphinus_delphis:0,Stenella_coeruleoalba:0)Node90:0.001271643810356352)Node84:0.001270597765961656,Mesoplodon_densirostris:0.001274469259124983)Node83:0.001277943154915399)Node80:0.001271405385590549,Hippopotamus_amphibius:0.003826112088919068)Node79:0,(Antilocapra_americana:0.003859878103395746,((Tragelaphus_strepsiceros:0,Aepyceros_melampus:0.001273678338092585,(Litocranius_walleri:0,Nanger_dama:0,Eudorcas_thomsonii:0)Node115:0.001273780745080085,Addax_nasomaculatus:0.001273484327995649,Ovis_canadensis:0)Node111:0.002548262190453046,(Muntiacus_reevesi:0,Rangifer_tarandus:0.001303185779283801)Node124:0.001273101385078006)Node110:0)Node108:0)Node78:0,(Phacochoerus_africanus:0,Sus_scrofa:0)Node127:0)Node77:0)Node75:0)Node23:0,(((Hipposideros_larvatus:0.006389539581872093,(Rhinolophus_ferrumequinum:0,Rhinolophus_hipposideros:0)Node134:0.002542101328217709)Node132:0,(Rousettus_aegyptiacus:0,Eidolon_helvum:0)Node137:0.001271414888710387)Node131:0,(Rhynchonycteris_naso:0.002543952889226467,(((Phyllostomus_discolor:0.001270813982236313,Carollia_perspicillata:0.002544365319253929,(Artibeus_lituratus:0,Artibeus_jamaicensis:0)Node147:0)Node144:0,Macrotus_californicus:0)Node143:0.002534241260768812,(((Myotis_daubentonii:0,Myotis_nattereri:0)Node154:0.001270953149151198,Myotis_mystacinus:0)Node153:0.001275074991120008,(Plecotus_auritus:0,((Vespertilio_murinus:0,(Nyctalus_leisleri:0,Pipistrellus_pygmaeus:0,Pipistrellus_pipistrellus:0)Node163:0.001267730078560559)Node161:0,Eptesicus_nilssonii:0)Node160:0)Node158:0.001271668126994212)Node152:0.005119614817103808)Node142:0)Node140:0.002559557733617702)Node130:0)Node18:0,(((Oryctolagus_cuniculus:0,Ochotona_princeps:0.003854461702042501)Node171:0,((Muscardinus_avellanarius:0.007659960808652282,(Urocitellus_parryii:0,(Sciurus_carolinensis:0,Sciurus_vulgaris:0)Node179:0.002545235783884742)Node177:0)Node175:0,(((((Microtus_agrestis:0.001261316216101782,Chionomys_nivalis:0)Node186:0.001268232136282318,Arvicola_amphibius:0.001254182909961328)Node185:0.002092561693870591,((Rattus_norvegicus:0.003626389293333991,(Mus_musculus:0.006308012100445868,Apodemus_sylvaticus:0.001269852879395384)Node193:0.001401564025581235)Node191:0,Micromys_minutus:0.006221868671548518)Node190:0.004425053621520278)Node184:0.01168109205306735,Thomomys_bottae:0.00722419316317691)Node183:0.003008871170472453,(Heterocephalus_glaber:0.003785096049118614,((Octodon_degus:0.00432642452012474,Chinchilla_lanigera:0.001955012055224111)Node201:0.002479832297940095,(Dasyprocta_punctata:0,Hydrochoerus_hydrochaeris:0)Node204:0.001911754788675083)Node200:0.001791263679748374)Node198:0.00124250571053288)Node182:0)Node174:0.00127038994343171)Node170:0,(Cynocephalus_volans:0.005138193216128389,((Nycticebus_coucang:0.006458581116734614,(Varecia_variegata:0.001273658710134777,Lemur_catta:0)Node212:0.001272244272161628)Node210:0,((Pithecia_pithecia:0.002544482182448219,((Leontopithecus_chrysomelas:0.01436976465753664,Cebuella_pygmaea:0.01882400688395781,Callithrix_jacchus:0.001270881966351477,Saguinus_imperator:0.01420509049489774,Saguinus_oedipus:0)Node219:0,Saimiri_boliviensis:0.001294562272218722)Node218:0)Node216:0,((Symphalangus_syndactylus:0,(Gorilla_gorilla:0,(Pan_paniscus:0,Pan_troglodytes:0)Node235:0.001273701702235728)Node233:0,(Pongo_pygmaeus:0,Pongo_abelii:0)Node238:0)Node230:0,((Papio_hamadryas:0,Mandrillus_sphinx:0,Macaca_nemestrina:0,Macaca_nigra:0)Node242:0,Colobus_guereza:0)Node241:0)Node229:0.001271888866859832)Node215:0.00255121691698361)Node209:0)Node207:0)Node169:0.003814884047792644)Node17:0.001331547534616182,(((Loxodonta_africana:0,Elephas_maximus:0)Node258:0.007668787650202313,(Heterohyrax_brucei:0,Procavia_capensis:0.001271783373529424)Node254:0.002544561697680643,Dugong_dugon:0.001269997854631945)Node252:0.003785594069012712,Rhynchocyon_petersi:0.001295089739572775)Node251:0,(Dasypus_novemcinctus:0.002575044795661679,(Tamandua_tetradactyla:0,Choloepus_didactylus:0)Node264:0)Node262:0.002569516471943849)Node16:0.01014896419405842)Node4:0.009914194571159907,(Tachyglossus_aculeatus:0,Ornithorhynchus_anatinus:0.001262162874202852)Node267:0.01137278425961745)Node3:0.01061671856680857,(((Rhea_pennata:0,Rhea_americana:0)Node277:0,Eudromia_elegans:0.00254778500615707,(Apteryx_mantelli:0.001272859357853515,Dromaius_novaehollandiae:0)Node274:0)Node271:0.00250894971665127,(((Tauraco_erythrolophus:0.00127464826811036,(Caprimulgus_europaeus:0.007749791797450718,((Apus_apus:0.003876743365841695,(Phaethornis_superciliosus:0,(Calypte_anna:0.001274209969745798,Heliangelus_exortis:0.001272816253935923)Node292:0)Node290:0.005125887625773946)Node288:0.003887623191124519,Podargus_strigoides:0.01557033750148305)Node287:0,Nyctibius_grandis:0.007837237181791174)Node285:0,((((Megascops_asio:0.002580634373251001,Strix_aluco:0.001265826829729623)Node366:0.01035704588994675,Leptosomus_discolor:0.003874392642827672,Trogon_surrucura:0.006452009114255943,(Momotus_momota:0.006375296238994964,(Dryobates_pubescens:0,Ramphastos_swainsonii:0)Node360:0.01005293130484074)Node358:0.0016817309604171,Bucorvus_abyssinicus:0.007744439135876419)Node354:0,((Gypaetus_barbatus:0,(Aquila_chrysaetos:0,Accipiter_gentilis:0,Buteo_buteo:0,(Milvus_milvus:0,Haliaeetus_albicilla:0,Haliaeetus_leucocephalus:0)Node376:0)Node372:0)Node370:0,Sarcoramphus_papa:0)Node369:0)Node353:0,(((((((Agapornis_nigrigenis:0.01921489727178337,Agapornis_fischeri:0.0074773900795462)Node399:0.001779282330405183,Melopsittacus_undulatus:0.001275060616928904,Lathamus_discolor:0.002552400258665223,(Trichoglossus_haematodus:0.02362562688350654,(Lorius_garrulus:0,Lorius_lory:0)Node396:0)Node394:0.001272284302345608)Node389:0.00127757712673184,Ara_ararauna:0.00647486587085662)Node388:0.003846454905793379,(Cacatua_moluccensis:0.005065510848628079,Nymphicus_hollandicus:0.003817724269700458)Node403:0)Node387:0.003909091524645628,((((((Leiothrix_lutea:0.00255082400930586,(Sylvia_borin:0.00253961695076967,Sylvia_atricapilla:0)Node414:0.002556894759889906)Node412:0.002543930876680525,Hirundo_rustica:0.0038268156316163)Node411:0.002548939735701156,Poecile_atricapillus:0.003823516763761666,((Acridotheres_tristis:0,Leucopsar_rothschildi:0)Node421:0.003776641745763922,(Catharus_ustulatus:0.001272024670236054,(Cossypha_polioptera:0.005106137338378384,Erithacus_rubecula:0.00251584031446388)Node427:0.002551832293670452)Node425:0,Cinclus_cinclus:0.006338425040697524)Node420:0.001271602132544739,(Corvus_moneduloides:0,(Taeniopygia_guttata:0.002563603674496249,Vidua_chalybeata:0.003817322042172399)Node435:0.01302071075991298,Corvus_hawaiiensis:0)Node432:0.009050699811459931,((((Passerculus_sandwichensis:0,Melospiza_melodia:0,Melospiza_georgiana:0)Node442:0,Geothlypis_trichas:0.003798370680911301)Node441:0.002541791157077011,(Haemorhous_mexicanus:0.003669602048551235,Fringilla_coelebs:0)Node448:0)Node440:0.001269599310743956,Passer_domesticus:0.007642300928278307)Node439:0.0012639661327757)Node409:0.003759479978364478,Pitta_sordida:0.007708361177561025)Node408:0.001275898777522272,Acanthisitta_chloris:0.01685836457816746)Node407:0,Chiroxiphia_lanceolata:0.005068195270482623)Node406:0.006386818270682162)Node386:0.001285563840759181,(((Falco_peregrinus:0,(Falco_biarmicus:0,Falco_cherrug:0,Falco_rusticolus:0)Node459:0)Node457:0,(Falco_punctatus:0,Falco_naumanni:0)Node464:0.001288796466655162)Node456:0.005706027532861867,Polihierax_semitorquatus:0.00235591866900933)Node455:0.002132818925325163)Node385:0.001253967504386492,Cariama_cristata:0)Node384:0.002561674693865955)Node352:0,Opisthocomus_hoazin:0.006401412160141884,(Pterocles_gutturalis:0.00918333103773581,(Caloenas_nicobarica:0.001273379433222847,((Columba_livia:0.001269586863943942,(Streptopelia_decaocto:0,Streptopelia_turtur:0)Node345:0.001269755195940242,Nesoenas_mayeri:0)Node343:0,Patagioenas_fasciata:0.001271775153606903)Node342:0)Node340:0.009014406337288441)Node338:0,(((Alca_torda:0.002561860220244571,Sterna_hirundo:0,(Larus_michahellis:0,Chroicocephalus_ridibundus:0)Node333:0)Node329:0.002574656632489698,Numenius_arquata:0.003863160856365344)Node328:0.003883377540792881,Pluvialis_apricaria:0.002575268172703406)Node327:0.003856227950243933,((Eurypyga_helias:0.003891118730987262,Rhynochetos_jubatus:0.002536217413356506)Node319:0.01168581238959433,Gavia_stellata:0.002582265772553207,((Ciconia_ciconia:0.003828897932472394,(Theristicus_caerulescens:0,Eudocimus_ruber:0)Node309:0.001276377385028907,Scopus_umbretta:0.002551521700248336)Node307:0,Morus_bassanus:0.007833672495698635)Node306:0.001279150789874095,(Spheniscus_demersus:0,Spheniscus_humboldti:0)Node315:0.003843812682950049)Node303:0,(Gallinula_chloropus:0.01420197416426829,(Balearica_regulorum:0,Grus_grus:0.00127554011776507)Node324:0.002555793437446139)Node322:0)Node282:0.002597662501326709,Cuculus_canorus:0.02492796644909139)Node281:0,(((Aix_galericulata:0,Aix_sponsa:0)Node495:0,((((Anas_platyrhynchos:0,Anas_acuta:0)Node476:0.001270031400490023,(Aythya_ferina:0,Aythya_fuligula:0)Node480:0,Netta_rufina:0.001269549042610042)Node475:0,Clangula_hyemalis:0)Node474:0,Bucephala_clangula:0.003829134867069639)Node473:0,(((Cygnus_olor:0,Cygnus_cygnus:0)Node491:0,Anser_anser:0,Anser_brachyrhynchus:0)Node487:0.001268804397049672,Oxyura_jamaicensis:0)Node486:0.003821425289657992)Node471:0.006479659631101846,(((((Tympanuchus_cupido:0.001262192016984724,Tetrao_urogallus:0.00126452723531655,Lagopus_muta:0)Node502:0.001264560200528578,Meleagris_gallopavo:0.00126433166960513)Node501:0,Pavo_cristatus:0.003795252517525344,Gallus_gallus:0.001264120076004236)Node500:0.002260940613888616,Colinus_virginianus:0.004073159942857534)Node499:0,Numida_meleagris:0.001761382225297797)Node498:0.009861034120352817)Node470:0.00380568722439511)Node280:0)Node270:0.0466342578348952,Ascaphus_truei:0.2181365136000392)
+
+### Testing selected branches for selection
+
+|              Branch               |  Rates   |     Max. dN/dS     | Sites @ EBF>=100 |  2x rate   |  3x rate   |      Test LRT      |Uncorrected p-value |
+|-----------------------------------|----------|--------------------|------------------|------------|------------|--------------------|--------------------|
+|          Ascaphus_truei           |     3    |    6.03 ( 9.88%)   |         13       |    0.00    |    0.00    |        3.25        |       0.07319      |
+|     Trichoglossus_haematodus      |     1    |   0.05 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Equus_caballus           |     1    |   0.01 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node198              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|       Agapornis_nigrigenis        |     1    |   0.05 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Suncus_etruscus          |     1    |   0.03 (100.00%)   |       N/A        |    0.28    |    2.72    |        0.00        |       1.00000      |
+|              Node270              |     2    |    5.92 ( 2.67%)   |          4       |    0.00    |    0.00    |        3.32        |       0.07074      |
+|              Node16               |     1    |   0.03 (100.00%)   |       N/A        |    0.84    |    0.00    |        0.00        |       1.00000      |
+|              Node184              |     1    |   0.05 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node267              |     1    |   0.06 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|           Octodon_degus           |     1    |   0.02 (100.00%)   |       N/A        |    0.24    |    0.00    |        0.00        |       1.00000      |
+|              Node435              |     1    |   0.07 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|       Acanthisitta_chloris        |     1    |   0.09 (100.00%)   |       N/A        |    0.49    |    0.00    |        0.00        |       1.00000      |
+|        Gallinula_chloropus        |     1    |   0.09 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Cuculus_canorus          |     1    |   0.24 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node409              |     1    |   0.02 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|      Chiroxiphia_lanceolata       |     1    |   0.03 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|       Rhynchonycteris_naso        |     1    |   0.02 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Ochotona_princeps         |     1    |   0.02 (100.00%)   |       N/A        |    0.71    |    0.00    |        0.00        |       1.00000      |
+|        Vespertilio_murinus        |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Rhynchocyon_petersi        |     1    |   0.01 (100.00%)   |       N/A        |    0.31    |    0.00    |        0.00        |       1.00000      |
+|           Pitta_sordida           |     1    |   0.06 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Thomomys_bottae          |     1    |   0.05 (100.00%)   |       N/A        |    0.35    |    0.00    |        0.00        |       1.00000      |
+|         Trogon_surrucura          |     1    |   0.04 (100.00%)   |       N/A        |    0.43    |    0.00    |        0.00        |       1.00000      |
+|     Muscardinus_avellanarius      |     1    |   0.06 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|       Heterocephalus_glaber       |     1    |   0.03 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node185              |     1    |   0.01 (100.00%)   |       N/A        |    2.10    |    0.00    |        0.00        |       1.00000      |
+|         Micromys_minutus          |     1    |   0.05 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Manis_pentadactyla         |     1    |   0.01 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Dasyprocta_punctata        |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|               Node5               |     1    |   0.06 (100.00%)   |       N/A        |    1.01    |    0.00    |        0.00        |       1.00000      |
+|              Node439              |     1    |   0.01 (100.00%)   |       N/A        |    0.36    |    0.00    |        0.00        |       1.00000      |
+|              Node319              |     1    |   0.12 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Eudromia_elegans          |     1    |   0.02 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|       Caprimulgus_europaeus       |     1    |   0.08 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Momotus_momota           |     1    |   0.06 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node432              |     1    |   0.10 (100.00%)   |       N/A        |    0.08    |    0.00    |        0.00        |       1.00000      |
+|        Opisthocomus_hoazin        |     1    |   0.07 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node471              |     1    |   0.08 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|       Bucorvus_abyssinicus        |     1    |   0.09 (100.00%)   |       N/A        |    0.01    |    0.00    |        0.00        |       1.00000      |
+|              Node204              |     1    |   0.02 (100.00%)   |       N/A        |    0.14    |    0.00    |        0.00        |       1.00000      |
+|        Podargus_strigoides        |     1    |   0.27 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Chinchilla_lanigera        |     1    |   0.02 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Nycticebus_coucang         |     1    |   0.06 (100.00%)   |       N/A        |    0.47    |    0.00    |        0.00        |       1.00000      |
+|              Node406              |     1    |   0.08 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Morus_bassanus           |     1    |   0.08 (100.00%)   |       N/A        |    0.64    |    0.00    |        0.00        |       1.00000      |
+|              Node290              |     1    |   0.06 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Erithacus_rubecula         |     1    |   0.03 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node340              |     1    |   0.13 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|               Node4               |     1    |   0.15 (100.00%)   |       N/A        |    0.79    |    1.53    |        0.00        |       1.00000      |
+|          Talpa_europaea           |     1    |   0.01 (100.00%)   |       N/A        |    0.91    |    0.00    |        0.00        |       1.00000      |
+|     Hydrochoerus_hydrochaeris     |     1    |   0.00 (100.00%)   |       N/A        |    1.45    |    0.00    |        0.00        |       1.00000      |
+|           Mus_musculus            |     1    |   0.07 (100.00%)   |       N/A        |    0.18    |    3.98    |        0.00        |       1.00000      |
+|       Dasypus_novemcinctus        |     1    |   0.03 (100.00%)   |       N/A        |    0.54    |    0.00    |        0.00        |       1.00000      |
+|       Pterocles_gutturalis        |     1    |   0.14 (100.00%)   |       N/A        |    0.27    |    0.00    |        0.00        |       1.00000      |
+|        Cynocephalus_volans        |     1    |   0.07 (100.00%)   |       N/A        |    0.24    |    0.00    |        0.00        |       1.00000      |
+|              Node427              |     1    |   0.04 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Cebuella_pygmaea          |     1    |   0.52 (100.00%)   |       N/A        |    0.46    |    0.00    |        0.00        |       1.00000      |
+|        Suricata_suricatta         |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Eurypyga_helias          |     1    |   0.05 (100.00%)   |       N/A        |    0.54    |    0.00    |        0.00        |       1.00000      |
+|              Node498              |     1    |   0.16 (100.00%)   |       N/A        |    0.43    |    0.00    |        0.00        |       1.00000      |
+|             Apus_apus             |     1    |   0.05 (100.00%)   |       N/A        |    0.44    |    0.00    |        0.00        |       1.00000      |
+|              Node258              |     1    |   0.13 (100.00%)   |       N/A        |    0.14    |    0.00    |        0.00        |       1.00000      |
+|        Leptosomus_discolor        |     1    |   0.05 (100.00%)   |       N/A        |    0.52    |    0.00    |        0.00        |       1.00000      |
+|         Numida_meleagris          |     1    |   0.02 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node152              |     1    |   0.08 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|       Tauraco_erythrolophus       |     1    |   0.02 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Rhynochetos_jubatus        |     1    |   0.04 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Colinus_virginianus        |     1    |   0.06 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node387              |     1    |   0.06 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node254              |     1    |   0.04 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|       Monodelphis_domestica       |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Hirundo_rustica          |     1    |   0.06 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|       Dromiciops_gliroides        |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Catharus_ustulatus         |     1    |   0.02 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Rattus_norvegicus         |     1    |   0.04 (100.00%)   |       N/A        |    1.36    |    0.00    |        0.00        |       1.00000      |
+|              Node179              |     1    |   0.04 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|      Carollia_perspicillata       |     1    |   0.04 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|           Dugong_dugon            |     1    |   0.02 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node360              |     1    |   0.23 (100.00%)   |       N/A        |    0.00    |    2.12    |        0.00        |       1.00000      |
+|       Oryctolagus_cuniculus       |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node171              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Leiothrix_lutea          |     1    |   0.04 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|       Tamandua_tetradactyla       |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Pavo_cristatus           |     1    |   0.07 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node132              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|       Macrotus_californicus       |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node288              |     1    |   0.07 (100.00%)   |       N/A        |    0.12    |    0.00    |        0.00        |       1.00000      |
+|        Pluvialis_apricaria        |     1    |   0.05 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node127              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Vidua_chalybeata          |     1    |   0.08 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Scopus_umbretta          |     1    |   0.05 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Saguinus_imperator         |     1    |   0.72 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node147              |     1    |   0.00 (100.00%)   |       N/A        |    2.93    |    0.00    |        0.00        |       1.00000      |
+|         Passer_domesticus         |     1    |   0.21 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node366              |     1    |   0.35 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node455              |     1    |   0.03 (100.00%)   |       N/A        |    1.04    |    0.00    |        0.00        |       1.00000      |
+|    Leontopithecus_chrysomelas     |     1    |   0.75 (100.00%)   |       N/A        |    0.38    |    0.00    |        0.00        |       1.00000      |
+|       Antilocapra_americana       |     1    |   0.07 (100.00%)   |       N/A        |    0.55    |    0.00    |        0.00        |       1.00000      |
+|        Agapornis_fischeri         |     1    |   0.17 (100.00%)   |       N/A        |    0.41    |    0.00    |        0.00        |       1.00000      |
+|              Node134              |     1    |   0.05 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|       Ramphastos_swainsonii       |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Cinclus_cinclus          |     1    |   0.16 (100.00%)   |       N/A        |    0.27    |    0.00    |        0.00        |       1.00000      |
+|              Node470              |     1    |   0.09 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Numenius_arquata          |     1    |   0.09 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|      Hippopotamus_amphibius       |     1    |   0.09 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Camelus_dromedarius        |     1    |   0.06 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Taeniopygia_guttata        |     1    |   0.06 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Oxyura_jamaicensis         |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Nyctibius_grandis         |     1    |   0.24 (100.00%)   |       N/A        |    0.35    |    0.00    |        0.00        |       1.00000      |
+|              Node143              |     1    |   0.06 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Chionomys_nivalis         |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Apodemus_sylvaticus        |     1    |   0.02 (100.00%)   |       N/A        |    1.74    |    0.00    |        0.00        |       1.00000      |
+|       Phyllostomus_discolor       |     1    |   0.03 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node108              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node177              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node315              |     1    |   0.11 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node370              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Dryobates_pubescens        |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Ciconia_ciconia          |     1    |   0.12 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node215              |     1    |   0.07 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|               Node6               |     1    |   0.04 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node137              |     1    |   0.03 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Addax_nasomaculatus        |     1    |   0.03 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node124              |     1    |   0.03 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node277              |     1    |   0.00 (100.00%)   |       N/A        |    3.96    |    0.00    |        0.00        |       1.00000      |
+|              Node48               |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node486              |     1    |   0.13 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|      Phascolarctos_cinereus       |     1    |   0.02 (100.00%)   |       N/A        |    2.18    |    0.00    |        0.00        |       1.00000      |
+|              Node190              |     1    |   0.17 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node271              |     1    |   0.07 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|       Poecile_atricapillus        |     1    |   0.14 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|     Tragelaphus_strepsiceros      |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|      Melopsittacus_undulatus      |     1    |   0.04 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node262              |     1    |   0.08 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node386              |     1    |   0.04 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|           Procyon_lotor           |     1    |   0.30 (100.00%)   |       N/A        |    1.37    |    5.28    |        0.00        |       1.00000      |
+|           Gallus_gallus           |     1    |   0.04 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|           Columba_livia           |     1    |   0.04 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node414              |     1    |   0.09 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node153              |     1    |   0.04 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node28               |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Balearica_regulorum        |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node500              |     1    |   0.08 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node182              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Cariama_cristata          |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|       Haemorhous_mexicanus        |     1    |   0.06 (100.00%)   |       N/A        |    3.37    |    0.00    |        0.00        |       1.00000      |
+|              Node342              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Eidolon_helvum           |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node252              |     1    |   0.17 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|       Nymphicus_hollandicus       |     1    |   0.17 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node251              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node421              |     1    |   0.09 (100.00%)   |       N/A        |    1.99    |    0.00    |        0.00        |       1.00000      |
+|              Node27               |     1    |   0.04 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node216              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node328              |     1    |   0.13 (100.00%)   |       N/A        |    0.81    |    0.00    |        0.00        |       1.00000      |
+|        Saimiri_boliviensis        |     1    |   0.02 (100.00%)   |       N/A        |    2.65    |    0.00    |        0.00        |       1.00000      |
+|         Microtus_agrestis         |     1    |   0.05 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|       Rousettus_aegyptiacus       |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node163              |     1    |   0.05 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node17               |     1    |   0.02 (100.00%)   |       N/A        |    2.58    |    0.00    |        0.00        |       1.00000      |
+|      Tachyglossus_aculeatus       |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node442              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|            Lemur_catta            |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Gavia_stellata           |     1    |   0.07 (100.00%)   |       N/A        |    1.41    |    0.00    |        0.00        |       1.00000      |
+|              Node264              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|       Patagioenas_fasciata        |     1    |   0.05 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|       Hipposideros_larvatus       |     1    |   0.46 (100.00%)   |       N/A        |    0.43    |    0.00    |        0.00        |       1.00000      |
+|        Cacatua_moluccensis        |     1    |   0.34 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|               Node3               |     1    |   1.55 (100.00%)   |       N/A        |    0.33    |    0.00    |        0.00        |       0.48999      |
+|              Node324              |     1    |   0.13 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node281              |     1    |   0.00 (100.00%)   |       N/A        |    7.89    |    0.00    |        0.00        |       1.00000      |
+|              Node440              |     1    |   0.05 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node420              |     1    |   0.05 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Callithrix_jacchus         |     1    |   0.05 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node292              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|     Phaethornis_superciliosus     |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|     Polihierax_semitorquatus      |     1    |   0.11 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node408              |     1    |   0.03 (100.00%)   |       N/A        |    2.28    |    0.00    |        0.00        |       1.00000      |
+|        Geothlypis_trichas         |     1    |   0.23 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|       Trichosurus_vulpecula       |     1    |   0.02 (100.00%)   |       N/A        |    2.91    |    0.00    |        0.00        |       1.00000      |
+|     Dromaius_novaehollandiae      |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node327              |     1    |   0.24 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Urocitellus_parryii        |     1    |   0.00 (100.00%)   |       N/A        |    4.11    |    0.00    |        0.00        |       1.00000      |
+|              Node388              |     1    |   0.25 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|           Ara_ararauna            |     1    |   0.73 (100.00%)   |       N/A        |    0.46    |    0.00    |        0.00        |       1.00000      |
+|         Lathamus_discolor         |     1    |   0.14 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node30               |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Arvicola_amphibius         |     1    |   0.06 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Caloenas_nicobarica        |     1    |   0.06 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node19               |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Petaurus_breviceps         |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|           Sylvia_borin            |     1    |   0.15 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|           Calypte_anna            |     1    |   0.07 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Fringilla_coelebs         |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Kogia_breviceps          |     1    |   0.07 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node502              |     1    |   0.06 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|      Mesoplodon_densirostris      |     1    |   0.07 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node441              |     1    |   0.17 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node62               |     1    |   0.07 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Heliangelus_exortis        |     1    |   0.07 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|            Alca_torda             |     1    |   0.17 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node183              |     1    |   0.54 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node56               |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Acrobates_pygmaeus         |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node309              |     1    |   0.07 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Tetrao_urogallus          |     1    |   0.07 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Ursus_maritimus          |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Meleagris_gallopavo        |     1    |   0.08 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Varecia_variegata         |     1    |   0.08 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Colobus_guereza          |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node212              |     1    |   0.07 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node280              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node75               |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Pithecia_pithecia         |     1    |   0.21 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Apteryx_mantelli          |     1    |   0.08 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|     Pipistrellus_pipistrellus     |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Nyctalus_leisleri         |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node193              |     1    |   0.04 (100.00%)   |       N/A        |    1.93    |    0.00    |        0.00        |       1.00000      |
+|              Node70               |     1    |   0.08 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Aepyceros_melampus         |     1    |   0.08 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node333              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Eudocimus_ruber          |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node200              |     1    |   0.27 (100.00%)   |       N/A        |    3.45    |    0.00    |        0.00        |       1.00000      |
+|              Node210              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node78               |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Eptesicus_nilssonii        |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node174              |     1    |   0.08 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node476              |     1    |   0.09 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node396              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node329              |     1    |   0.25 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node407              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node343              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Muntiacus_reevesi         |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node399              |     1    |   0.18 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node175              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node130              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node456              |     1    |  >1000 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.82        |       0.27212      |
+|              Node186              |     1    |   0.12 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node144              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node158              |     1    |   0.09 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node403              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node80               |     1    |   0.10 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Tympanuchus_cupido         |     1    |   0.10 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Ovis_canadensis          |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|           Rhea_pennata            |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node448              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node229              |     1    |   0.11 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Sterna_hirundo           |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Megascops_asio           |     1    |   0.34 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node233              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node154              |     1    |   0.11 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node303              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node115              |     1    |   0.11 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node201              |     1    |   0.46 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|             Grus_grus             |     1    |   0.11 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Cossypha_polioptera        |     1    |   1.86 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.10        |       0.43487      |
+|        Sylvia_atricapilla         |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|     Ornithorhynchus_anatinus      |     1    |   0.17 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node207              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node161              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node241              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Streptopelia_turtur        |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Sciurus_vulgaris          |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node282              |     1    |   0.40 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node411              |     1    |   0.40 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node18               |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|     Symphalangus_syndactylus      |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Rangifer_tarandus         |     1    |   0.01 (100.00%)   |       N/A        |   22.50    |    0.00    |        0.00        |       1.00000      |
+|              Node501              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|           Lagopus_muta            |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node10               |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Procavia_capensis         |     1    |   0.16 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node111              |     1    |   0.56 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|       Artibeus_jamaicensis        |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node104              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node140              |     1    |   0.35 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Sarcoramphus_papa         |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|    Lagenorhynchus_albirostris     |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Inia_geoffrensis          |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Myotis_daubentonii         |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node235              |     1    |   0.16 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|            Lutra_lutra            |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node389              |     1    |   0.17 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node495              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Accipiter_gentilis         |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Gypaetus_barbatus         |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Phoca_vitulina           |     1    |   0.17 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|       Sciurus_carolinensis        |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|            Strix_aluco            |     1    |   0.17 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Bucephala_clangula         |     1    |  >1000 (100.00%)   |       N/A        |    0.00    |    0.00    |        1.36        |       0.20078      |
+|              Node169              |     1    |  >1000 (100.00%)   |       N/A        |    0.00    |    0.00    |        1.12        |       0.22884      |
+|              Node487              |     1    |   0.12 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node412              |     1    |   1.38 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.01        |       0.47902      |
+|               Node8               |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node230              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|     Passerculus_sandwichensis     |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Nesoenas_mayeri          |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Plecotus_auritus          |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node425              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node77               |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node191              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|       Streptopelia_decaocto       |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node358              |     1    |   0.52 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node354              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node219              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Saguinus_oedipus          |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|     Theristicus_caerulescens      |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node242              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node50               |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node160              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|           Martes_martes           |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node87               |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|    Balaenoptera_acutorostrata     |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node55               |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Eudorcas_thomsonii         |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|            Nanger_dama            |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Myotis_nattereri          |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|       Leucopsar_rothschildi       |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Larus_michahellis         |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node102              |     1    |   0.33 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|           Vulpes_vulpes           |     1    |   0.34 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|            Aix_sponsa             |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node345              |     1    |   0.34 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node384              |     1    |  >1000 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.79        |       0.27661      |
+|            Anas_acuta             |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node474              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|           Netta_rufina            |     1    |   0.35 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Corvus_hawaiiensis         |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Lorius_garrulus          |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node394              |     1    |   0.14 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node285              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node385              |     1    |   0.07 (100.00%)   |       N/A        |    8.64    |    0.00    |        0.00        |       1.00000      |
+|        Artibeus_lituratus         |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node322              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|       Acridotheres_tristis        |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Melospiza_melodia         |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node54               |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|     Rhinolophus_ferrumequinum     |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node131              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node25               |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|               Node7               |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node79               |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node307              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|     Rhinolophus_hipposideros      |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node47               |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node238              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node24               |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node274              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node142              |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node352              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node473              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Papio_hamadryas          |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Myotis_mystacinus         |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|           Pongo_abelii            |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Mandrillus_sphinx         |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Globicephala_melas         |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Eubalaena_glacialis        |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Loxodonta_africana         |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|            Canis_lupus            |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node369              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node372              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Litocranius_walleri        |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Lontra_canadensis         |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node353              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node58               |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node376              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|      Zalophus_californianus       |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Aquila_chrysaetos         |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Lynx_canadensis          |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node457              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node38               |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node459              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Spheniscus_demersus        |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node464              |     1    |  >1000 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.59        |       0.31261      |
+|           Cygnus_cygnus           |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node491              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node306              |     1    |  >1000 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.44        |       0.34129      |
+|            Anser_anser            |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node83               |     1    |  >1000 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.57        |       0.31585      |
+|              Node90               |     1    |  >1000 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.48        |       0.33333      |
+|              Node84               |     1    |  >1000 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.57        |       0.31641      |
+|              Node475              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node480              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|           Aythya_ferina           |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Aix_galericulata          |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Corvus_moneduloides        |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Heterohyrax_brucei         |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node218              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node23               |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node110              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node209              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node170              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node287              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node499              |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Neofelis_nebulosa         |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|           Milvus_milvus           |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|       Anser_brachyrhynchus        |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Delphinus_delphis         |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Mustela_nigripes          |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Acinonyx_jubatus          |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Mustela_putorius          |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Mustela_lutreola          |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Anas_platyrhynchos         |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Mustela_erminea          |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Clangula_hyemalis         |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Falco_peregrinus          |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|    Chroicocephalus_ridibundus     |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Elephas_maximus          |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Falco_naumanni           |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Gorilla_gorilla          |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|           Falco_cherrug           |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|              Node338              |     1    |   0.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Falco_punctatus          |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Falco_biarmicus          |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Falco_rusticolus          |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|       Choloepus_didactylus        |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|        Melospiza_georgiana        |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|       Balaenoptera_musculus       |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|           Macaca_nigra            |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|           Lycaon_pictus           |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|            Buteo_buteo            |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Aythya_fuligula          |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|           Puma_concolor           |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|            Lorius_lory            |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Macaca_nemestrina         |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Rhea_americana           |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|            Cygnus_olor            |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|       Spheniscus_humboldti        |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|            Sus_scrofa             |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|           Panthera_onca           |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|       Stenella_coeruleoalba       |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Panthera_pardus          |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|       Lagenorhynchus_acutus       |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Panthera_uncia           |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Phocoena_sinus           |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Panthera_tigris          |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|         Phocoena_phocoena         |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Pan_troglodytes          |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|       Haliaeetus_albicilla        |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|      Phacochoerus_africanus       |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|           Pan_paniscus            |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|       Pipistrellus_pygmaeus       |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|           Orcinus_orca            |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|          Pongo_pygmaeus           |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|           Panthera_leo            |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+|     Haliaeetus_leucocephalus      |     1    |   1.00 (100.00%)   |       N/A        |    0.00    |    0.00    |        0.00        |       1.00000      |
+----
+### Adaptive branch site random effects likelihood test 
+Likelihood ratio test for episodic diversifying positive selection at Holm-Bonferroni corrected _p =   0.0500_ found **0** branches under selection among **447** tested.
+
