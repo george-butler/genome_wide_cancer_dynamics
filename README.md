@@ -1,4 +1,4 @@
-# Genome wide evolutionary forces shape cancer prevalence across vertebrates
+# Indirect genomic effects shape cancer risk across species
 
 ### George Butler<sup>1,2</sup>, Srividya Ramakrishnan<sup>3</sup>, Tyler Collins<sup>3</sup>, Joanna Baker<sup>4</sup>, Sarah R. Amend<sup>2</sup>, Michael C. Schatz<sup>3</sup>, Chris Venditti<sup>3</sup>, Kenneth J. Pienta<sup>2</sup>
 
