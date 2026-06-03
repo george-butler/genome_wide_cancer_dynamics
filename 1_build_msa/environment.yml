@@ -1,0 +1,21 @@
+name: MSAbuilder
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+
+dependencies:
+  - mamba
+  - gcc
+  - python=3.9
+  - snakemake
+  - biopython
+  - gffread
+  - mafft
+  - iqtree
+  - miniprot
+  - spaln
+  - matplotlib
+  - pandas
+  - agat
+  - pip

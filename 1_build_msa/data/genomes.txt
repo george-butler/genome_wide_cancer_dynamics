@@ -1,0 +1,4 @@
+/scratch4/mschatz1/sramakr4/sources/george_githu_repo/01_build_msa/data/genomes/Ciconia_ciconia/ncbi_dataset/data/GCA_030584885.1/GCA_030584885.1_CIBIO_CCic_1.0_genomic.fna
+/scratch4/mschatz1/sramakr4/sources/george_githu_repo/01_build_msa/data/genomes/Milvus_milvus/ncbi_dataset/data/GCA_026770275.1/GCA_026770275.1_ASM2677027v1_genomic.fna
+/scratch4/mschatz1/sramakr4/sources/george_githu_repo/01_build_msa/data/genomes/VGP/Tauraco_erythrolophus/bTauEry1.pri.cur.20190813.fna
+/scratch4/mschatz1/sramakr4/sources/george_githu_repo/01_build_msa/data/genomes/VGP/Gypaetus_barbatus/bGypBar2.pri.cur.20211217.fna
