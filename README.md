@@ -12,9 +12,4 @@
 
 <sup><sup>5</sup>School of Biological Sciences, University of Reading, Reading, UK</sup>
 
-<p align="center">
-  <img width="380" height="355" src="/example_image/phylogenetic_tree.png">
-</p>
-
-
 Seperate README files are enclosed within each subdirectory. 
