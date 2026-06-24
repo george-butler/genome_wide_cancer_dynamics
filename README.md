@@ -12,4 +12,4 @@
 
 <sup><sup>5</sup>School of Biological Sciences, University of Reading, Reading, UK</sup>
 
-Seperate README files are enclosed within each subdirectory. 
+Seperate README files are enclosed within each subdirectory, and subdirectories should be run sequentially. 
