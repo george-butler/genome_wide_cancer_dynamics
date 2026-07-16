@@ -13,3 +13,5 @@
 <sup><sup>5</sup>School of Biological Sciences, University of Reading, Reading, UK</sup>
 
 Seperate README files are enclosed within each subdirectory, and subdirectories should be run sequentially. 
+
+Note, MSA construction and rate estimation in HyPhy are computational intensive. Individual genes can take multiple weeks to run across multiple cores. Run time varies dependent gene length, number of species in the alignment, and gene complexity. 
